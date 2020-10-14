@@ -1,0 +1,15 @@
+#template {
+    display: flex;
+}
+
+#template .content {
+    display: block;
+    flex-grow: 1;
+}
+
+#template .content h1 {
+    font-size: 2rem;
+    text-transform: uppercase;
+    text-align: center;
+    color: #222;
+}

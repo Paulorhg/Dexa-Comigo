@@ -1,0 +1,64 @@
+#login{
+    margin-top: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#logar{
+    width:  100%;
+    max-width: 360px;
+    border: 2px solid #054B27;
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 25px;
+    background-color: #FFFFFF;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+#logar legend{
+    font-size: 24px;
+    font-weight: 900;
+
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    
+}
+
+#logar label{
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: 900;
+
+}
+
+#logar input{
+    width: 100%;
+    height: 32px;
+    font-weight: normal;
+    font-size: 14px;
+}
+
+#logar button{
+    margin-top: 15px;
+    margin-bottom: 10px;
+    width: 100%;
+    height: 40px;
+    background-color: #1AD274;
+    border: 0;
+    border-radius: 8px;
+    color: #FFFFFF;
+    font-weight: 900;
+}
+
+.voltar{
+    margin: auto;
+    font-weight: 900;
+    font-size: 14px;
+}

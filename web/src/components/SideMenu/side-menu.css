@@ -1,0 +1,100 @@
+#side-menu {
+    display: flex;
+    flex-direction: column;
+    width: 460px;
+    padding: 1rem;
+    background-color: #1AD274;
+    min-height: 100vh;
+}
+
+#side-menu * {
+    color: #fff;
+}
+
+#side-menu .menu-header {
+    text-align: center;
+    padding: 1rem 0;
+}
+#side-menu .menu-header h1 {
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 48px;
+}
+#side-menu .menu-header p {
+    font-weight: 500;
+    font-size: 24px;
+}
+
+#side-menu nav {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 4rem 0;
+    font-size: 24px;
+}
+#side-menu nav ul {
+    width: 80%;
+    margin: 0 auto;
+}
+#side-menu nav li {
+    position: relative;
+}
+#side-menu nav li.active::before {
+    content: "";
+    position: absolute;
+    left: -20px;
+    top: 18px;
+    bottom: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    background-color: #fff;
+}
+#side-menu nav a {
+    display: block;
+    width: fit-content;
+    padding: 10px 5px;
+    font-weight: 900;
+    font-size: 24px;
+    transition: .3s all;
+}
+#side-menu nav a:hover {
+    transform: translate(10px);
+}
+#side-menu .menu-footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1rem;
+    width: 100%;
+}
+#side-menu .menu-footer .account-summary {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 5px;
+}
+#side-menu .menu-footer .account-summary h3 {
+    font-size: 60px;
+}
+#side-menu .menu-footer .account-summary h3 span {
+    font-size: 40px;
+    font-weight: 900;
+}
+#side-menu .menu-footer .account-summary small,
+#side-menu .menu-footer .account-summary svg {
+    font-size: 28px;
+}
+#side-menu .menu-footer .account-summary h3,
+#side-menu .menu-footer .account-summary small,
+#side-menu .menu-footer .account-summary svg {
+    font-weight: 900;
+}
+#side-menu .menu-footer .account-summary button {
+    background: transparent;
+    border: 0;
+}
+        

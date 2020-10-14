@@ -1,0 +1,90 @@
+#cadastrar{
+    background-color: #FFFFFF;
+}
+
+#cadastrar *{
+    font-weight: 900;
+}
+
+#cadastrar header{
+    background-color: #1AD274;
+    font-size: 32px;
+    color: #FFFFFF;
+    padding: 11px 0px 11px 30px;
+}
+
+
+
+#cadastrar h1{
+    color: #054B27;
+    font-size: 36px;
+
+    margin-top: 30px;
+    margin-bottom: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#cadastrar section{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#cadastro{
+    width:  100%;
+    max-width: 360px;
+    border: 2px solid #054B27;
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 25px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+#cadastro legend{
+    font-size: 24px;
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    
+}
+
+#cadastro label{
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+#cadastro input{
+    width: 100%;
+    height: 32px;
+    font-weight: normal;
+    font-size: 14px;
+}
+
+#cadastro button{
+    margin-top: 15px;
+    margin-bottom: 5px;
+    width: 100%;
+    height: 40px;
+    background-color: #1AD274;
+    border: 0;
+    border-radius: 8px;
+    color: #FFFFFF;
+    font-weight: 900;
+}
+
+.logar{
+    font-size: 14px;
+    margin: auto;
+}
+
+#happyGuy{
+    max-width:45%;
+    height: auto;
+}
