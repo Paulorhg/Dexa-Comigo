@@ -6,7 +6,7 @@ import { useToasts } from 'react-toast-notifications'
 import api from '../../services/api'
 
 import './register.css'
-import happyGuy from '../../assets/happy-guy.jpg'
+import churrasqueira from '../../assets/churrasqueira.jpg'
 
 export default function Register() {
 
@@ -53,10 +53,10 @@ export default function Register() {
     return (
         <div id="cadastrar">
             <header>
-                MINHAS CONTAS
+                DEIXA COMIGO
             </header>
             <body id="cadastrar"> 
-                <h1>ALCANCE SEUS OBJETIVOS CONOSCO</h1>
+                <h1>SUA ÚNICA PREOCUPAÇÃO SERÁ A DIVERSÃO</h1>
 
                 <section>
                     <form id="cadastro" action="" method="post" onSubmit={onSubmit}>
@@ -88,7 +88,7 @@ export default function Register() {
                         <Link className="logar" to="/logar">Já possui um cadastro? Clique aqui</Link>
                     </form>
 
-                    <img id="happyGuy" src={happyGuy} alt="happy guy"/>
+                    <img id="churrasqueira" src={churrasqueira} alt="churrasqueira"/>
                 </section>
             </body>
         </div>
