@@ -64,22 +64,25 @@ export default function Accounts() {
     return (
         <aside id="side-menu">
             <section className="menu-header">
-                <h1>Minhas Contas</h1>
+                <h1>Deixa Comigo</h1>
                 <p>Bem vindo, {name}</p>
             </section>
             <nav>
                 <ul>
                     <li className={path === '/lançamentos' ? 'active' : ''}>
-                        <Link to="/lançamentos">Histórico de Lançamentos</Link>
+                        <Link to="/lançamentos">MEUS CHURRASCOS</Link>
                     </li>
                     <li className={path === '/receita' ? 'active' : ''}>
-                        <Link to="/receita">Adicionar Lançamento</Link>
+                        <Link to="/receita">DIVISÃO DE CONTAS</Link>
                     </li>
                     <li className={path === '/contas' ? 'active' : ''}>
-                        <Link to="/contas">Contas</Link>
+                        <Link to="/contas">CRIAR CHURRASCO</Link>
                     </li>
                     <li className={path === '/categorias' ? 'active' : ''}>
-                        <Link to="/categorias">Categorias</Link>
+                        <Link to="/categorias">PREFERÊNCIAS</Link>
+                    </li>
+                    <li className={path === '/categorias' ? 'active' : ''}>
+                        <Link to="/categorias">AMIGOS</Link>
                     </li>
                 </ul>
             </nav>
