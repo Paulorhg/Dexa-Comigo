@@ -1,17 +1,21 @@
-const { Router, request } = require('express');
 const express = require('express');
+
+const UsersController = require('./controllers/UsersController');
+const ItensController = require('./controllers/ItensController');
+const ItemQuantidadeController = require('./controllers/ItemQuantidadeController');
 
 const routes = express.Router();
 
-routes.post('/users',  (req, resp) => {
-    const body = req.body;
+routes.get('/users',UsersController.index);
 
-    console.log(body);
+routes.post('/users',UsersController.create);
 
-    return resp.json({
-        evento:'Churras',
-        criador: 'Pedrão'
-    });
-});
+routes.get('/itens',ItensController.index);
+
+routes.post('/itens',ItensController.create);
+
+routes.get('/itemQuantidade',ItemQuantidadeController.index);
+
+routes.post('/itemQuantidade',ItemQuantidadeController.create);
 
 module.exports = routes;
