@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 
 import Template from '../../components/Template' 
 import {FiTrash2} from 'react-icons/fi'
-import api from '../../services/api'
-import { useToasts } from 'react-toast-notifications'
+//import api from '../../services/api'
+//import { useToasts } from 'react-toast-notifications'
 
 import './accounts.css'
 
