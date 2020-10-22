@@ -1,4 +1,3 @@
-const connection = require('../database/connection');
 
 module.exports = {
     async index(request, response){
@@ -8,16 +7,41 @@ module.exports = {
     },
 
     async create(request, response) {
-        const {amount} = request.body;
-        const guest_id = request.headers.guest;
-        const item_id = request.headers.item;
+        const {date} = request.body;
+        const owner = request.headers.owner;
 
         const [id] = await connection('churrasco').insert({
-            guest_id,
-            item_id,
-            amount
+            date,
+            owner
         });
 
         return response.json({id});
+    },
+
+    async delete(request, response){
+        const { id } = request.params;
+        const owner = request.headers.authorization;
+
+        const churrasco = await connection('churrasco')
+            .where('id', id)
+            .select('owner').first();
+
+        if(churrasco.owner != owner){
+            return response.status(401).json({ error: 'Operation not permitted.'})
+        }
+
+        await connection('churrasco').where('id',id).delete();
+
+        return response.status(204).send();
+    },
+
+    async find(request, response){
+        const id = request.headers.authorization;
+
+        const churrasco = await connection('churrasco')
+            .where('id', id)
+            .select('*');
+
+        return response.json(churrasco);
     }
 }
