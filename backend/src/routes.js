@@ -1,3 +1,4 @@
+/*
 const express = require('express');
 
 const UsersController = require('./app/controllers/UsersController');
@@ -43,3 +44,5 @@ routes.get('/participante',ParticipanteController.index);
 routes.post('/participante',ParticipanteController.create);
 
 module.exports = routes;
+
+*/
