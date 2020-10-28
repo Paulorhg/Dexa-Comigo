@@ -1,12 +1,12 @@
 const express = require('express');
 
-const UsersController = require('./controllers/UsersController');
-const ItensController = require('./controllers/ItensController');
-const ItemQuantidadeController = require('./controllers/ItemQuantidadeController');
-const ChurrascoController = require('./controllers/ChurrascoController');
-const PreferencesController = require('./controllers/PreferencesController');
-const FriendController = require('./controllers/FriendController');
-const ParticipanteController = require('./controllers/ParticipanteController');
+const UsersController = require('./app/controllers/UsersController');
+const ItensController = require('./app/controllers/ItensController');
+const ItemQuantidadeController = require('./app/controllers/ItemQuantidadeController');
+const ChurrascoController = require('./app/controllers/ChurrascoController');
+const PreferencesController = require('./app/controllers/PreferencesController');
+const FriendController = require('./app/controllers/FriendController');
+const ParticipanteController = require('./app/controllers/ParticipanteController');
 
 const routes = express.Router();
 
@@ -22,13 +22,13 @@ routes.get('/itemQuantidade',ItemQuantidadeController.index);
 
 routes.post('/itemQuantidade',ItemQuantidadeController.create);
 
-routes.get('/churrasco',ChurrascoController.index);
+//routes.get('/churrasco',ChurrascoController.index);
 
-routes.get('/churrasco',ChurrascoController.find);
+//routes.get('/churrasco',ChurrascoController.find);
 
-routes.post('/churrasco',ChurrascoController.create);
+//routes.post('/churrasco',ChurrascoController.create);
 
-routes.delete('/churrasco/:id',ChurrascoController.delete);
+//routes.delete('/churrasco/:id',ChurrascoController.delete);
 
 routes.get('/preferences',PreferencesController.index);
 
