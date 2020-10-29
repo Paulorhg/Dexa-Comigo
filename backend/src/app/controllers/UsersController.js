@@ -1,4 +1,4 @@
-
+/*
 const crypto = require('crypto');
 
 module.exports = {
@@ -22,3 +22,5 @@ module.exports = {
         return response.json({id});
     }
 }
+
+*/

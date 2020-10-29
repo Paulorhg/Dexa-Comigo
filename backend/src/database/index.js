@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://DeixaComigoAdmin:churrasco@cluster0.ekusj.mongodb.net/DeixaComigoDB?retryWrites=true&w=majority',{useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb+srv://DeixaComigoAdmin:churrasco@cluster0.ekusj.mongodb.net/DeixaComigoDB?retryWrites=true&w=majority',{useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true});
 
 module.exports = mongoose;
 

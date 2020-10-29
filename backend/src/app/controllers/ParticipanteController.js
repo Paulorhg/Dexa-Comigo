@@ -1,5 +1,5 @@
 
-
+/*
 module.exports = {
     async index(request, response){
         const participante = await connection('participante').select('*');
@@ -21,3 +21,4 @@ module.exports = {
         return response.json({id});
     }
 }
+*/

@@ -22,7 +22,7 @@ const UserSchema = new mongoose.Schema({
         select: false
     },
     passwordResetExpires: {
-        type: String,
+        type: Date,
         select: false
     }
 });

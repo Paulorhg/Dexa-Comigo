@@ -1,4 +1,4 @@
-
+/*
 
 module.exports = {
     async index(request, response){
@@ -20,3 +20,5 @@ module.exports = {
         return response.json({id});
     }
 }
+
+*/

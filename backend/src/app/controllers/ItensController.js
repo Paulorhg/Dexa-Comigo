@@ -1,5 +1,5 @@
 
-
+/*
 module.exports = {
     async index(request, response){
         const itens = await connection('itens').select('*');
@@ -18,3 +18,5 @@ module.exports = {
         return response.json({id});
     }
 }
+
+*/
