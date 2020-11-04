@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useToasts } from 'react-toast-notifications'
 
 import api from '../../services/api'
@@ -10,31 +9,23 @@ import churrasqueira from '../../assets/churrasqueira.jpg'
 
 export default function Register() {
 
-    const history = useHistory();
-    const { addToast } = useToasts();
-    
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    useEffect(() => {
-        const jwtToken = window.localStorage.getItem('jwt_token');
-        if (jwtToken) {
-            history.push('/lançamentos');
-        }
-    }, []);
+    const history = useHistory();
+    const { addToast } = useToasts();
 
-
-    const onSubmit = e => {
+    function handleRegister(e){
         e.preventDefault();
-        
+
         const data = {
             name,
             email,
             password
-        }
+        };
 
-        api.post('/api/user', data)
+        api.post('auth/register', data)
             .then(resp => resp.data)
             .then(resp => {
                 console.info(resp);
@@ -49,7 +40,16 @@ export default function Register() {
                 addToast(error.message, { appearance: 'error' });
             });
     }
+/*
+    
+    useEffect(() => {
+        const jwtToken = window.localStorage.getItem('jwt_token');
+        if (jwtToken) {
+            history.push('/lançamentos');
+        }
+    }, []);
 
+*/
     return (
         <div id="cadastrar">
             <header>
@@ -59,7 +59,7 @@ export default function Register() {
                 <h1>SUA ÚNICA PREOCUPAÇÃO SERÁ A DIVERSÃO</h1>
 
                 <section>
-                    <form id="cadastro" action="" method="post" onSubmit={onSubmit}>
+                    <form id="cadastro" action="" method="post" onSubmit={handleRegister}>
                         <legend>CADASTRE-SE AQUI</legend>
                         <label htmlFor="name">Nome Completo</label>
                         <input 

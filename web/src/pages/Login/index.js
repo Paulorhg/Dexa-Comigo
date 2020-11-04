@@ -8,7 +8,6 @@ import {AiOutlineRollback} from 'react-icons/ai'
 
 import './login.css'
 
-
 export default function Accounts() {
 
     const history = useHistory();
@@ -25,7 +24,7 @@ export default function Accounts() {
             password
         }
 
-        api.post('/api/login', data)
+        api.post('/auth/authenticate', data)
             .then(resp => resp.data)
             .then(resp => {
                 window.localStorage.setItem('jwt_token', resp.access_token);

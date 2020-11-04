@@ -15,6 +15,11 @@ const ItemSchema = new mongoose.Schema({
         ref: 'ItensQuantity',
         require: true
     }],
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        require: true
+    }
 });
 
 

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useRouteMatch, useHistory } from 'react-router-dom';
-import { FaEye, FaEyeSlash } from 'react-icons/fa'
 import { useToasts } from 'react-toast-notifications'
 
 import api from '../../services/api'
@@ -56,11 +55,6 @@ export default function Accounts() {
             })
     }, []);
 
-    const handleEyeClick = event => {
-        window.localStorage.setItem('showSummary', !showSummary);
-        setShowSummary(!showSummary);
-    };
-
     return (
         <aside id="side-menu">
             <section className="menu-header">
@@ -86,26 +80,6 @@ export default function Accounts() {
                     </li>
                 </ul>
             </nav>
-            <section className="menu-footer">
-                <div className="account-summary">
-                    <small>R$</small>
-                    <h3>
-                        { showSummary ? 
-                        new Intl.NumberFormat(
-                            'pt-br', 
-                            { style: 'currency', currency: 'BRL' }
-                        )
-                        .format(summary)
-                        .slice(3)
-                        : 
-                        <span>( ͡~ ͜ʖ ͡°)</span> }
-                    </h3>
-                    <button onClick={ handleEyeClick }>
-                        {showSummary ? <FaEye /> : <FaEyeSlash />}
-                    </button>
-                </div>
-                <p>{ showSummary ? 'Seu saldo geral' : 'shhhh'}</p>
-            </section>
         </aside>
     );
 }

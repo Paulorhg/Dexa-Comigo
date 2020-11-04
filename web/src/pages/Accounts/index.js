@@ -8,7 +8,7 @@ import {FiTrash2} from 'react-icons/fi'
 import './accounts.css'
 
 export default function Accounts() {
-
+/*
     const { addToast } = useToasts();
     
     const [ accounts, setAccounts ] = useState([]);
@@ -46,7 +46,8 @@ export default function Accounts() {
             })
             .catch(err => addToast('Erro ao tentar remover conta', { appearance: 'error' }))
     }
-
+*/
+/*
     return (
         <Template>
             <div id="contas">
@@ -90,5 +91,5 @@ export default function Accounts() {
                 </ul>
             </div>
         </Template>
-    );
+    );*/
 }

@@ -9,7 +9,7 @@ import api from '../../services/api'
 import './categories.css'
 
 export default function Categories() {
-
+/*
     const { addToast } = useToasts();
 
     const [categories, setCategories] = useState([]);
@@ -56,7 +56,8 @@ export default function Categories() {
             addToast(err.message, { appearance: 'error' });
         });
     }
-
+*/
+/*
     return (
         <Template>
             <div id="categorias">
@@ -116,5 +117,5 @@ export default function Categories() {
                 </ul>
             </div>
         </Template>
-    );
+    );*/
 }

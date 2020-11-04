@@ -31,7 +31,7 @@ router.get('/:itemId', async (req, res) => {
 router.post('/', async (req, res) => {
     try {
 
-        const { name, date, itensquantity } = req.body;
+        const { name, price, itensquantity } = req.body;
 
         const item = await Item.create({ name, date, user: req.userId });
 
