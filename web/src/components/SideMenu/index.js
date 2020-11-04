@@ -37,22 +37,6 @@ export default function Accounts() {
         const boolValue = storageShowSummary === 'true' || storageShowSummary === null;
         setShowSummary(boolValue);
 
-        api.get('/api/accounts')
-            .then(resp => resp.data)
-            .then(resp => {
-                // token expired
-                if (resp.hasOwnProperty('valid') && !resp.valid) {
-                    window.localStorage.clear();
-                    history.push('/logar');
-                    return;
-                }
-                const accounts = resp.Accounts;
-                const total = accounts.reduce((total, account) => total + account.balance, 0);
-                setSummary(total);
-            })
-            .catch(err => {
-                addToast('Falha ao tentar obter saldo total', { appearance: 'error' });
-            })
     }, []);
 
     return (
@@ -63,8 +47,8 @@ export default function Accounts() {
             </section>
             <nav>
                 <ul>
-                    <li className={path === '/lançamentos' ? 'active' : ''}>
-                        <Link to="/lançamentos">MEUS CHURRASCOS</Link>
+                    <li className={path === '/churrascos' ? 'active' : ''}>
+                        <Link to="/churrascos">MEUS CHURRASCOS</Link>
                     </li>
                     <li className={path === '/receita' ? 'active' : ''}>
                         <Link to="/receita">DIVISÃO DE CONTAS</Link>

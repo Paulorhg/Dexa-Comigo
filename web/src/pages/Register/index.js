@@ -40,16 +40,14 @@ export default function Register() {
                 addToast(error.message, { appearance: 'error' });
             });
     }
-/*
     
     useEffect(() => {
         const jwtToken = window.localStorage.getItem('jwt_token');
         if (jwtToken) {
-            history.push('/lançamentos');
+            history.push('/churrascos');
         }
     }, []);
 
-*/
     return (
         <div id="cadastrar">
             <header>

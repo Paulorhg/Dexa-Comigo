@@ -4,21 +4,22 @@ import Template from '../../components/Template'
 
 import api from '../../services/api'
 
-import './entrys.css'
+import './churrascos.css'
 
 export default function Entrys() {
 
-    const [ entries, setEntries ] = useState([]);
+    const [ churrascos, setChurrascos ] = useState([]);
 
     useEffect(() => {
-        // const data = api.get('/entry')
+        const data = api.get('/churrascos/')
     }, []);
 
     return (
-        <Template id="entrys">
-            <h1>Histórico de lançamentos</h1>
-
-            
+        <Template id="churrascos">
+            <h1>Meus Churrascos</h1>
+            <div>
+                
+            </div>
         </Template>
     );
 }

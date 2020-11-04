@@ -1,9 +1,9 @@
 #side-menu {
     display: flex;
     flex-direction: column;
-    width: 460px;
+    width: 330px;
     padding: 1rem;
-    background-color: #1AD274;
+    background-color: #19DAE7;
     min-height: 100vh;
 }
 
@@ -18,11 +18,11 @@
 #side-menu .menu-header h1 {
     text-transform: uppercase;
     font-weight: 900;
-    font-size: 48px;
+    font-size: 36px;
 }
 #side-menu .menu-header p {
     font-weight: 500;
-    font-size: 24px;
+    font-size: 20px;
 }
 
 #side-menu nav {
@@ -55,7 +55,7 @@
     width: fit-content;
     padding: 10px 5px;
     font-weight: 900;
-    font-size: 24px;
+    font-size: 20px;
     transition: .3s all;
 }
 #side-menu nav a:hover {
