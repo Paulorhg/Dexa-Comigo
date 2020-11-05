@@ -1,16 +1,16 @@
 import React from 'react'
 
 import Template from '../../components/Template'  
-import NavEntry from '../../components/NavEntry'
+import NavChurrasco from '../../components/NavChurrasco'
 import api from '../../services/api'
 
-import './transfer.css'
+import './futuro.css'
 
-export default function Transfer() {
+export default function Futuro() {
 
     return (
         <Template>
-            <NavEntry />
+            <NavChurrasco/>
         </Template>
     );
 }

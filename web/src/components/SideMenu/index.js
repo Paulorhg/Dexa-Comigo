@@ -12,9 +12,7 @@ export default function Accounts() {
     const { addToast } = useToasts();
     const { path } = useRouteMatch();
     
-    const [ showSummary, setShowSummary ] = useState(true);
     const [ name, setName ] = useState('');
-    const [ summary, setSummary ] = useState(0);
     
     // token & user
     useEffect(() => {
@@ -33,9 +31,7 @@ export default function Accounts() {
 
     // summary
     useEffect(() => {
-        const storageShowSummary = window.localStorage.getItem('showSummary');  
-        const boolValue = storageShowSummary === 'true' || storageShowSummary === null;
-        setShowSummary(boolValue);
+        
 
     }, []);
 
@@ -50,17 +46,17 @@ export default function Accounts() {
                     <li className={path === '/churrascos' ? 'active' : ''}>
                         <Link to="/churrascos">MEUS CHURRASCOS</Link>
                     </li>
-                    <li className={path === '/receita' ? 'active' : ''}>
-                        <Link to="/receita">DIVISÃO DE CONTAS</Link>
+                    <li className={path === '/divisao' ? 'active' : ''}>
+                        <Link to="/divisao">DIVISÃO DE CONTAS</Link>
                     </li>
-                    <li className={path === '/contas' ? 'active' : ''}>
-                        <Link to="/contas">CRIAR CHURRASCO</Link>
+                    <li className={path === '/criar' ? 'active' : ''}>
+                        <Link to="/criar">CRIAR CHURRASCO</Link>
                     </li>
-                    <li className={path === '/categorias' ? 'active' : ''}>
-                        <Link to="/categorias">PREFERÊNCIAS</Link>
+                    <li className={path === '/preferencias' ? 'active' : ''}>
+                        <Link to="/preferencias">PREFERÊNCIAS</Link>
                     </li>
-                    <li className={path === '/categorias' ? 'active' : ''}>
-                        <Link to="/categorias">AMIGOS</Link>
+                    <li className={path === '/amigos' ? 'active' : ''}>
+                        <Link to="/amigos">AMIGOS</Link>
                     </li>
                 </ul>
             </nav>

@@ -1,17 +1,15 @@
 import React from 'react'
 
 import Template from '../../components/Template' 
-import NavEntry from '../../components/NavEntry'
+import NavChurrasco from '../../components/NavChurrasco'
 import api from '../../services/api'
 
-import './income.css'
+import './passado.css'
 
-export default function Income() {
-
-
+export default function Passado() {
     return (
         <Template>
-            <NavEntry />
+            <NavChurrasco />
         </Template>
     );
 }

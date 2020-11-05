@@ -27,9 +27,9 @@ export default function Accounts() {
         api.post('/auth/authenticate', data)
             .then(resp => resp.data)
             .then(resp => {
-                window.localStorage.setItem('jwt_token', resp.access_token);
+                window.localStorage.setItem('jwt_token', resp.token);
                 window.localStorage.setItem('user', JSON.stringify(resp.user));
-                api.defaults.headers.common['Authorization'] = 'Bearer ' + resp.access_token;
+                api.defaults.headers.common['Authorization'] = 'Bearer ' + resp.token;
                 history.push('/churrascos');
             })
             .catch(error => {

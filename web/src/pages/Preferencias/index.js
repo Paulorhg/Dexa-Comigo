@@ -6,9 +6,9 @@ import {FiTrash2} from 'react-icons/fi'
 import { useToasts } from 'react-toast-notifications'
 import api from '../../services/api'
 
-import './categories.css'
+import './preferencias.css'
 
-export default function Categories() {
+export default function Preferencias() {
 
     const { addToast } = useToasts();
 

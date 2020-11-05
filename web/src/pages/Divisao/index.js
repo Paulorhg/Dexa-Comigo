@@ -5,13 +5,13 @@ import {FiTrash2} from 'react-icons/fi'
 import api from '../../services/api'
 import { useToasts } from 'react-toast-notifications'
 
-import './accounts.css'
+import './divisao.css'
 
-export default function Accounts() {
+export default function Divisao() {
 
     const { addToast } = useToasts();
     
-    const [ accounts, setAccounts ] = useState([]);
+    const [ divisao, setDivisao ] = useState([]);
     const [ name, setName ] = useState('');
     const [ balance, setBalance ] = useState(0);
 
@@ -42,7 +42,7 @@ export default function Accounts() {
     return (
         <Template>
             <div id="contas">
-                <h1>CONTAS BANCÁRIAS</h1>
+                <h1>Divisão de contas</h1>
 
                 <form id="addConta" action="" method="post" onSubmit={handleSubmit}>
                     <label htmlFor="nome">Nome da conta</label>
@@ -65,7 +65,7 @@ export default function Accounts() {
                 </form>
 
                 <ul id="contasCadastradas">
-                    { accounts.map(account => (
+                    { divisao.map(account => (
                         <li key={account.id}>
                             <p>{account.name}</p>
                             <p id="saldoConta">
