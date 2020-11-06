@@ -29,10 +29,7 @@ export default function Register() {
             .then(resp => resp.data)
             .then(resp => {
                 console.info(resp);
-                addToast(
-                    "Cadastro realizado com sucesso! Faça login para continuar.", 
-                    { appearance: 'success' }
-                );
+                api.defaults.headers.common['Authorization'] = 'Bearer ' + resp.token;
                 history.push('/logar');
             })
             .catch(error => {

@@ -5,54 +5,33 @@ import Template from '../../components/Template'
 
 import api from '../../services/api'
 import NavChurrasco from '../../components/NavChurrasco'
+import ListChurrasco from '../../components/ListChurrasco'
 import './churrascos.css'
 
 export default function Entrys() {
     const history = useHistory();
     const [ churrascos, setChurrascos ] = useState([]);
 
-    const token = localStorage.getItem('jwt_token');
-    const loggedUser = localStorage.getItem('user');
-    
+    const loggedUser = window.localStorage.getItem('user');
+    const token = window.localStorage.getItem('jwt_token');
+
     useEffect(() => {
-        const token = window.localStorage.getItem('jwt_token');
-        const loggedUser = window.localStorage.getItem('user');
-        
         if (!token || !loggedUser) {
             history.push('/logar');
             return;
         }
-
-        const user = JSON.parse(loggedUser)
-        api.defaults.headers.common['Authorization'] = 'Bearer ' + token;
     }, []);
 
     useEffect(() => {
-        console.log(loggedUser);
-        const data = api.get('churrascos/', {
-            // headers: {
-            //     "authorization": 'Bearer '+ token
-            // }
-        }).then(res => {
+        api.get('churrascos', {}).then(res => {
             setChurrascos(res.data);
         })
-    }, []);
-
+    }, [loggedUser]);
     return (
         <Template id="churrascos">
             <NavChurrasco />
-
-            <div id="lista">
-                <ul>
-                    {/* {churrascos.map(churrasco => (
-                        <li>
-                        <strong>Nome:</strong>
-                        
-                        <strong>Data:</strong>
-                    </li>
-                    ))} */}
-                </ul>
-            </div>
+            <ListChurrasco churrascos = {churrascos} />
+            
         </Template>
     );
 }

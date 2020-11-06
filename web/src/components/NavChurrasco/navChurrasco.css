@@ -14,9 +14,9 @@
 
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
+    column-gap: 30px; 
 
-    margin: 0 250px 0 250px;    
     padding-bottom: 15px;
 }
 
@@ -25,6 +25,7 @@
     color: #ffffff !important;
     font-size: 20px;
     font-weight: 500;
+    
 }
 
 #top-nav li.active::before {

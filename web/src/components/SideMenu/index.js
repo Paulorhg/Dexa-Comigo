@@ -30,10 +30,12 @@ export default function Accounts() {
     }, []);
 
     // summary
-    useEffect(() => {
-        
+    const handleLogout = (e) => {
+        window.localStorage.removeItem('jwt_token');
+        window.localStorage.removeItem('user');
 
-    }, []);
+        history.push('/logar');
+    };
 
     return (
         <aside id="side-menu">
@@ -59,6 +61,13 @@ export default function Accounts() {
                         <Link to="/amigos">AMIGOS</Link>
                     </li>
                 </ul>
+
+                <div className = "menu-footer">
+                    <button type="button" onClick={e => handleLogout(e)}>
+                        Sair
+                    </button>
+                </div>
+                
             </nav>
         </aside>
     );

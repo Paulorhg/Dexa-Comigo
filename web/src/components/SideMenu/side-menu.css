@@ -1,7 +1,7 @@
 #side-menu {
     display: flex;
     flex-direction: column;
-    width: 330px;
+    width: 300px;
     padding: 1rem;
     background-color: #19DAE7;
     min-height: 100vh;
@@ -66,10 +66,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 2rem 1rem;
+    padding: 6rem 2rem;
     width: 100%;
 }
-#side-menu .menu-footer .account-summary {
+#side-menu .menu-footer {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
@@ -77,24 +77,10 @@
     max-width: 400px;
     margin-bottom: 5px;
 }
-#side-menu .menu-footer .account-summary h3 {
-    font-size: 60px;
-}
-#side-menu .menu-footer .account-summary h3 span {
-    font-size: 40px;
-    font-weight: 900;
-}
-#side-menu .menu-footer .account-summary small,
-#side-menu .menu-footer .account-summary svg {
-    font-size: 28px;
-}
-#side-menu .menu-footer .account-summary h3,
-#side-menu .menu-footer .account-summary small,
-#side-menu .menu-footer .account-summary svg {
-    font-weight: 900;
-}
-#side-menu .menu-footer .account-summary button {
+#side-menu .menu-footer button {
     background: transparent;
     border: 0;
+    font-size: 22px;
+    font-weight: 450;
 }
         
