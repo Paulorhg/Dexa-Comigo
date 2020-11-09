@@ -9,6 +9,11 @@ import './amigos.css'
 export default function Amigos() {
     return (
         <Template>
+            <div id="amigos">
+                <div id="header">
+                    <h1>AMIGOS</h1>
+                </div>
+            </div>
         </Template>
     );
 }

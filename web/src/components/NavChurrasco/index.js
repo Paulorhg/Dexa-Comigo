@@ -14,10 +14,10 @@ export default function NewChurrasco() {
             <h1>Meus Churrascos</h1>
             <ul>
                 <li className={path === '/passado' ? 'active' : ''}>
-                    <Link to="/passado">Passado</Link>
+                    <Link to="/passado">Passados</Link>
                 </li>
                 <li className={path === '/futuro' ? 'active' : ''}>
-                    <Link to="/futuro">Futuro</Link>
+                    <Link to="/futuro">Futuros</Link>
                 </li>
             </ul>
         </nav>

@@ -13,10 +13,14 @@ export default function listChurrasco(churrascos) {
             <ul>
                 { churrascos.churrascos.length !=0 ? churrascos.churrascos.churrascos.map(churrasco => (
                     <li>
-                        <strong>Nome:</strong>
-                        <p>{churrasco.name}</p>
-                        <strong>Data:</strong>
-                        <p>{churrasco.date}</p>
+                        <Link to={`/churrasco/${churrasco._id}`}>
+                            <div id="link">
+                                <strong>Nome:</strong>
+                                <p>{churrasco.name}</p>
+                                <strong>Data:</strong>
+                                <p>{churrasco.date}</p>
+                            </div>
+                        </Link>
                     </li>
                 )) : <p>carregando</p>
                 }

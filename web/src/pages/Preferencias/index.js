@@ -16,52 +16,52 @@ export default function Preferencias() {
     const [name, setName] = useState('');
     const [type, setType] = useState('income');
 
-    useEffect(() => {
-        api.get('/api/categories')
-            .then(resp => resp.data)
-            .then(resp => {
-                setCategories(resp)
-                console.log(resp);
-            })
-            .catch(err => {
-                addToast(err.message, { appearance: 'error' });
-            })
-    }, []);
+    // useEffect(() => {
+    //     api.get('/api/categories')
+    //         .then(resp => resp.data)
+    //         .then(resp => {
+    //             setCategories(resp)
+    //             console.log(resp);
+    //         })
+    //         .catch(err => {
+    //             addToast(err.message, { appearance: 'error' });
+    //         })
+    // }, []);
 
-    const handleSubmit = event => {
-        event.preventDefault();
+    // const handleSubmit = event => {
+    //     event.preventDefault();
 
-        api.post('/api/categories', { name, type })
-            .then(resp => resp.data)
-            .then(resp => {
-                console.log(resp);
-                setCategories([...categories, resp]);
-                addToast('Categoria cadastrada', { appearance: 'success' });
-            })
-            .catch(err => {
-                console.error(err);
-                addToast(err.message, { appearance: 'error' });
-            });
-    }
+    //     api.post('/api/categories', { name, type })
+    //         .then(resp => resp.data)
+    //         .then(resp => {
+    //             console.log(resp);
+    //             setCategories([...categories, resp]);
+    //             addToast('Categoria cadastrada', { appearance: 'success' });
+    //         })
+    //         .catch(err => {
+    //             console.error(err);
+    //             addToast(err.message, { appearance: 'error' });
+    //         });
+    // }
 
-    const handleDelete = (event, id) => {
-        event.currentTarget.parentNode.remove();
-        api.delete('/api/categories/' + id)
-        .then(resp => {
-            console.log(resp);
-            addToast('Categoria deletada', { appearance: 'success' });
-        })
-        .catch(err => {
-            console.error(err.message);
-            addToast(err.message, { appearance: 'error' });
-        });
-    }
+    // const handleDelete = (event, id) => {
+    //     event.currentTarget.parentNode.remove();
+    //     api.delete('/api/categories/' + id)
+    //     .then(resp => {
+    //         console.log(resp);
+    //         addToast('Categoria deletada', { appearance: 'success' });
+    //     })
+    //     .catch(err => {
+    //         console.error(err.message);
+    //         addToast(err.message, { appearance: 'error' });
+    //     });
+    // }
     return (
         <Template>
-            <div id="categorias">
-                <h1>CATEGORIAS</h1>
+            <div id="preferencias">
+                <h1 id="header">PREFERÊNCIAS</h1>
 
-                <form id="addCat" action="" method="post" onSubmit={handleSubmit}>
+                {/* <form id="addCat" action="" method="post" onSubmit={handleSubmit}>
                     <label htmlFor="novaCat">Descrição</label><br/>
                     <input id="novaCat" type="text" value={name} onChange={e => setName(e.target.value)} />
                     <br/>
@@ -112,7 +112,7 @@ export default function Preferencias() {
                             </button>
                         </li>
                     ))}
-                </ul>
+                </ul> */}
             </div>
         </Template>
     );

@@ -23,9 +23,14 @@ export default function Entrys() {
     }, []);
 
     useEffect(() => {
-        api.get('churrascos', {}).then(res => {
-            setChurrascos(res.data);
-        })
+        try {
+            api.get('churrascos', {}).then(res => {
+                setChurrascos(res.data);
+            })
+        } catch (error) {
+            
+        }
+        
     }, [loggedUser]);
     return (
         <Template id="churrascos">

@@ -1,10 +1,8 @@
-#categorias h1{
-    color: #054B27 !important;
-    font-size: 36px;
+#preferencias #header{
+    background-color: #5D3EB4;
     font-weight: 900;
-
-    margin-top: 30px;
-    margin-bottom: 50px;
+    padding: 30px 0 65px 0;
+    color: white !important;
 }
 
 #categorias #addCat{

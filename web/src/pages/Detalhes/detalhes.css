@@ -1,0 +1,21 @@
+#detalhes #header{
+    height: 160px;
+    background-color: #E87738;
+    margin-top: 0;
+    padding-top: 30px;
+}
+
+#detalhes #header h1{
+    color: #ffffff !important;
+    font-size: 36px;
+    font-weight: 900;
+}
+
+#detalhes #header h2{
+    color: #ffffff !important;
+    padding-top: 5px;
+    font-size: 26px;
+    font-weight: 50;
+    display: flex;
+    justify-content: center;
+}

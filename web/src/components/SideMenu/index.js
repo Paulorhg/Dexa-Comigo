@@ -16,8 +16,8 @@ export default function Accounts() {
     
     // token & user
     useEffect(() => {
-        const token = window.localStorage.getItem('jwt_token');
-        const loggedUser = window.localStorage.getItem('user');
+        const token = localStorage.getItem('jwt_token');
+        const loggedUser = localStorage.getItem('user');
         
         if (!token || !loggedUser) {
             history.push('/logar');
@@ -31,8 +31,7 @@ export default function Accounts() {
 
     // summary
     const handleLogout = (e) => {
-        window.localStorage.removeItem('jwt_token');
-        window.localStorage.removeItem('user');
+        localStorage.clear();
 
         history.push('/logar');
     };

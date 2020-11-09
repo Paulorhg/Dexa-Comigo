@@ -10,6 +10,7 @@ import Passado from './pages/Passado'
 import Futuro from './pages/Futuro'
 import Criar from './pages/Criar'
 import Amigos from './pages/Amigos'
+import Detalhes from './pages/Detalhes'
 
 export default function Routes() {
     return (
@@ -18,6 +19,7 @@ export default function Routes() {
                 <Route path="/" exact component={Register} />
                 <Route path="/logar" component={Login} />
                 <Route path="/churrascos" component={MeusChurrascos} />
+                <Route path="/churrasco/:id" component={Detalhes} />
                 <Route path="/passado" component={Passado} />
                 <Route path="/preferencias" component={Preferencias} />
                 <Route path="/divisao" component={Divisao} />

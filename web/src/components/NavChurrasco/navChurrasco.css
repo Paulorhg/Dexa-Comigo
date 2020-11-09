@@ -7,7 +7,7 @@
     font-size: 36px;
     font-weight: 900;
     margin-top: 0;
-    padding: 30px 0 30px 0;
+    padding: 30px 0 26px 0;
 }
 
 #top-nav ul{
@@ -25,10 +25,9 @@
     color: #ffffff !important;
     font-size: 20px;
     font-weight: 500;
-    
 }
 
-#top-nav li.active::before {
+#top-nav nav li.active::before{
     content: "";
     position: absolute;
     left: -20px;

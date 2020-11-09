@@ -1,0 +1,11 @@
+#amigos #header{
+    background-color: #D2E213;
+    margin-top: 0;
+    padding: 30px 0 65px 0;
+}
+
+#amigos #header h1{
+    color: #ffffff !important;
+    font-size: 36px;
+    font-weight: 900;
+}
