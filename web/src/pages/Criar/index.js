@@ -8,12 +8,19 @@ import './criar.css'
 
 export default function Criar() {
 
-    const data = new FormData();
+    
+    
 
 
 
     function handleSubmit(e){
         e.preventDefault();
+
+        const data = {
+            name,
+            date,
+            
+        }
     }
     
     return (
