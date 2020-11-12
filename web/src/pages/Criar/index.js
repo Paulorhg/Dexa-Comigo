@@ -8,20 +8,29 @@ import './criar.css'
 
 export default function Criar() {
 
-    
-    
+    const loggedUser = window.localStorage.getItem('user');
+    const [ itens, setItens ] = useState([]);
 
 
-
-    function handleSubmit(e){
-        e.preventDefault();
-
-        const data = {
-            name,
-            date,
+    useEffect(() => {
+        try {
+            api.get('itens', {}).then(res => {
+                setItens(res.data);
+            })
+        } catch (error) {
             
         }
-    }
+    }, [loggedUser]);
+    
+    // function handleSubmit(e){
+    //     e.preventDefault();
+
+    //     const data = {
+    //         name,
+    //         date
+            
+    //     }
+    // }
     
     return (
         <Template>
@@ -30,9 +39,9 @@ export default function Criar() {
                     <h1 >CRIAR CHURRASCO</h1>
                 </div>
                 <div>
-                    <form onSubmit={handleSubmit} className="create-churrasco">
+                    {/* <form onSubmit={handleSubmit} className="create-churrasco">
 
-                    </form>
+                    </form> */}
                 </div>
             </div>
             

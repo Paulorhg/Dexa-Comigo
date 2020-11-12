@@ -24,7 +24,7 @@ export default function Entrys() {
 
     useEffect(() => {
         try {
-            api.get('churrascos', {}).then(res => {
+            api.get('churrascos',{}).then(res => {
                 setChurrascos(res.data);
             })
         } catch (error) {

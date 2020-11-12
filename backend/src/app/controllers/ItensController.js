@@ -2,7 +2,6 @@ const express = require('express');
 const authMiddleware = require('../middlewares/auth');
 
 const Item = require('../Model/Item');
-const ItensQuantity = require('../Model/ItensQuantity');
 
 const router = express.Router();
 
@@ -10,7 +9,7 @@ router.use(authMiddleware);
 
 router.get('/', async (req, res) => {
     try {
-        const itens = await Item.find().populate(['user', 'itensquantity']);
+        const itens = await Item.find().populate(['user']);
 
         return res.send({ itens });
     } catch (err) {
@@ -20,7 +19,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:itemId', async (req, res) => {
     try {
-        const item = await item.findById(req.params.itemId).populate(['user', 'itensquantity']);
+        const item = await item.findById(req.params.itemId).populate(['user']);
 
         return res.send({ item });
     } catch (err) {
@@ -31,17 +30,9 @@ router.get('/:itemId', async (req, res) => {
 router.post('/', async (req, res) => {
     try {
 
-        const { name, price, itensquantity } = req.body;
+        const { name, price } = req.body;
 
-        const item = await Item.create({ name, date, user: req.userId });
-
-        await Promise.all(itensquantity.map(async itemquantity => {
-            const itemItens = new ItensQuantity({ ...itemquantity, item: item._id });
-
-            await itemItens.save();
-
-            item.itensquantity.push(itemItens);
-        }));
+        const item = await Item.create({ name, price, user: req.userId });
 
         await item.save();
 
@@ -51,41 +42,30 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.put('/:churrascoId', async (req, res) => {
+router.put('/:itemId', async (req, res) => {
     try {
 
-        const { name, date, itensquantity } = req.body;
+        const { name, price } = req.body;
 
-        const churrasco = await Churrasco.findByIdAndUpdate(req.params.churrascoId, { name, date }, { new: true });
+        const item = await item.findByIdAndUpdate(req.params.itemId, { name, price }, { new: true });
 
-        churrasco.itensquantity = [];
-        await ItensQuantity.remove({ churrasco: churrasco._id });
+        await item.save();
 
-        await Promise.all(itensquantity.map(async itemquantity => {
-            const churrascoItens = new ItensQuantity({ ...itemquantity, churrasco: churrasco._id });
-
-            await churrascoItens.save();
-
-            churrasco.itensquantity.push(churrascoItens);
-        }));
-
-        await churrasco.save();
-
-        return res.send({ churrasco });
+        return res.send({ item });
     } catch (err) {
-        return res.status(400).send({ error: 'Error updating churrasco' })
+        return res.status(400).send({ error: 'Error updating item' })
     }
 });
 
-router.delete('/:churrascoId', async (req, res) => {
+router.delete('/:itemId', async (req, res) => {
     try {
-        await Churrasco.findByIdAndRemove(req.params.churrascoId);
+        await item.findByIdAndRemove(req.params.itemId);
 
         return res.send();
     } catch (err) {
-        return res.status(400).send({ error: 'Error deleting churrasco' })
+        return res.status(400).send({ error: 'Error deleting item' })
     }
 });
 
-module.exports = app => app.use('/churrascos', router);
+module.exports = app => app.use('/itens', router);
 

@@ -1,12 +1,11 @@
 const mongoose = require('../../database');
-const bcrypt = require('bcryptjs');
 
 const ChurrascoSchema = new mongoose.Schema({
     name: {
         type: String,
         require: true,
     },
-    user: {
+    owner: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         require: true

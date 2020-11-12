@@ -9,8 +9,9 @@ const router = express.Router();
 router.use(authMiddleware);
 
 router.get('/', async (req, res) => {
+    const user = req.userId;
     try {
-        const churrascos = await Churrasco.find().populate(['user', 'itensquantity']);
+        const churrascos = await Churrasco.find( { owner: user } ).populate(['owner', 'itensquantity']);
 
         return res.send({ churrascos });
     } catch (err) {
@@ -33,7 +34,7 @@ router.post('/', async (req, res) => {
 
         const { name, date, itensquantity } = req.body;
 
-        const churrasco = await Churrasco.create({ name, date, user: req.userId });
+        const churrasco = await Churrasco.create({ name, date, owner: req.userId });
 
         await Promise.all(itensquantity.map(async itemquantity => {
             const churrascoItens = new ItensQuantity({ ...itemquantity, churrasco: churrasco._id });

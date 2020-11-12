@@ -1,5 +1,4 @@
 const mongoose = require('../../database');
-const bcrypt = require('bcryptjs');
 
 const ItemSchema = new mongoose.Schema({
     name: {
@@ -10,11 +9,6 @@ const ItemSchema = new mongoose.Schema({
         type: Number,
         require: true
     },
-    itensquantity: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'ItensQuantity',
-        require: true
-    }],
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',

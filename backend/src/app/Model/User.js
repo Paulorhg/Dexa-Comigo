@@ -24,6 +24,10 @@ const UserSchema = new mongoose.Schema({
     passwordResetExpires: {
         type: Date,
         select: false
+    },
+    friends:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Friend'
     }
 });
 
