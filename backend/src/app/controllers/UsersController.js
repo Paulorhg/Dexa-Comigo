@@ -1,7 +1,7 @@
 const express = require('express');
 const authMiddleware = require('../middlewares/auth');
 
-const Churrasco = require('../Model/Churrasco');
+const Churrasco = require('../Model/User');
 const ItensQuantity = require('../Model/ItensQuantity');
 const User = require('../Model/User');
 
@@ -11,7 +11,7 @@ router.use(authMiddleware);
 
 router.get('/', async (req, res) => {
     try {
-        const churrascos = await Churrasco.find().populate(['user', 'itensquantity']);
+        const churrascos = await Users.find().populate(['user']);
 
         return res.send({ churrascos });
     } catch (err) {

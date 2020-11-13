@@ -21,7 +21,17 @@ router.get('/', async (req, res) => {
 
 router.get('/:amigoId', async (req, res) => {
     try {
-        const friend = await friend.findById(req.params.friendId).populate(['user1', 'user2']);
+        const friend = await friend.findById(req.params.amigoId).populate(['user1', 'user2']);
+
+        return res.send({ friend });
+    } catch (err) {
+        return res.status(400).send({ error: 'Error loading friend' })
+    }
+});
+
+router.get('/:amigoEmail', async (req, res) => {
+    try {
+        const friend = await friend.find( { email:req.params.amigoEmail } ).populate(['user1', 'user2']);
 
         return res.send({ friend });
     } catch (err) {
