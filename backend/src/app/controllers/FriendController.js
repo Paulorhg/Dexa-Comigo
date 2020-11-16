@@ -71,7 +71,8 @@ router.put('/:amigoId', async (req, res) => {
 
 router.delete('/:amigoId', async (req, res) => {
     try {
-        await Friend.findByIdAndRemove(req.params.friendId);
+        console.log(req.params.amigoId)
+        await Friend.findByIdAndRemove(req.params.amigoId);
 
         return res.send();
     } catch (err) {

@@ -9,10 +9,9 @@ export default function listChurrasco(churrascos) {
 
     return (
         <div id="lista">
-            {console.log(churrascos)}
             <ul>
                 { churrascos.churrascos.length !=0 ? churrascos.churrascos.churrascos.map(churrasco => (
-                    <li>
+                    <li key={churrasco._id}>
                         <Link to={`/churrasco/${churrasco._id}`}>
                             <div id="link">
                                 <strong>Nome:</strong>

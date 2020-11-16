@@ -30,7 +30,7 @@ export default function Register() {
             .then(resp => {
                 console.info(resp);
                 api.defaults.headers.common['Authorization'] = 'Bearer ' + resp.token;
-                history.push('/logar');
+                history.push('/churrasco');
             })
             .catch(error => {
                 console.error(error);
@@ -50,7 +50,7 @@ export default function Register() {
             <header>
                 DEIXA COMIGO
             </header>
-            <body id="cadastrar"> 
+            <div> 
                 <h1>SUA ÚNICA PREOCUPAÇÃO SERÁ A DIVERSÃO</h1>
 
                 <section>
@@ -85,7 +85,7 @@ export default function Register() {
 
                     <img id="churrasqueira" src={churrasqueira} alt="churrasqueira"/>
                 </section>
-            </body>
+            </div>
         </div>
     );
 }

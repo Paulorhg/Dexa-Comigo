@@ -9,3 +9,52 @@
     font-size: 36px;
     font-weight: 900;
 }
+
+#amigos #form-amigos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 50px;
+}
+
+#amigos #form-amigos button{
+    margin-left: 10px;
+}
+
+#amigos h2{
+    font-weight: 600;
+    font-size: 24px;
+
+    margin-bottom: 30px;
+
+}
+
+#amigos #lista {
+    height: 70px;
+    width: 300px;
+    background-color:aliceblue;
+    box-shadow: 3px 6px 4px rgba(50, 50, 50, 0.4);
+}
+
+#amigos #lista-amigos{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 50px;
+}
+
+#amigos #lista div{
+    padding: 25px 10px;
+}
+
+#amigos #lista button{
+    background-color:aliceblue;
+    border: none;
+    position: relative;
+    left: 250px;
+    bottom: 20px;
+}

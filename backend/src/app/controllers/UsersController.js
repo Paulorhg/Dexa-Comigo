@@ -11,11 +11,11 @@ router.use(authMiddleware);
 
 router.get('/', async (req, res) => {
     try {
-        const churrascos = await Users.find().populate(['user']);
+        const user = await User.find().populate(['user']);
 
-        return res.send({ churrascos });
+        return res.send({ user });
     } catch (err) {
-        return res.status(400).send({ error: 'Error loading churrascos' })
+        return res.status(400).send({ error: 'Error loading user' })
     }
 });
 
@@ -26,6 +26,17 @@ router.get('/:userId', async (req, res) => {
         return res.send({ churrasco });
     } catch (err) {
         return res.status(400).send({ error: 'Error loading churrasco' })
+    }
+});
+
+router.get('/email/:userEmail', async (req, res) => {
+    try {
+        const email = req.params.userEmail
+        const user = await User.findOne({ email });
+        console.log(user);
+        return res.send({ user });
+    } catch (err) {
+        return res.status(400).send({ error: 'Error loading user' })
     }
 });
 
