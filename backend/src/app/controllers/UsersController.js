@@ -33,7 +33,6 @@ router.get('/email/:userEmail', async (req, res) => {
     try {
         const email = req.params.userEmail
         const user = await User.findOne({ email });
-        console.log(user);
         return res.send({ user });
     } catch (err) {
         return res.status(400).send({ error: 'Error loading user' })

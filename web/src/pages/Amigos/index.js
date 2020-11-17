@@ -12,7 +12,8 @@ export default function Amigos() {
 
     const params = useParams();
     const [amigos, setAmigos] = useState([]);
-    const [novoAmigo, setNovoAmigo] = useState();
+    //const [user2, setUser2] = useState();
+    //const [novoAmigo, setNovoAmigo] = useState();
     const [email, setEmail] = useState('');
 
     const loggedUser = window.localStorage.getItem('user');
@@ -21,6 +22,7 @@ export default function Amigos() {
     useEffect(() => {
         try {
             api.get('amigos/', {}).then(res => {
+                //console.log(res.data)
                 setAmigos(res.data);
             })
         } catch (error) {
@@ -29,28 +31,49 @@ export default function Amigos() {
 
     }, [loggedUser, params.id]);
 
+    // async function buscarAmigo(){
+        
+    // }
 
-    async function buscarAmigo(){
+    // function teste(){
+    //     console.log(novoAmigo)
+    // }
+
+    async function handleNovoAmigo(e){
+        e.preventDefault();
+        
         try {
             //console.log(email)
             await api.get(`users/email/${email}`, {}).then(res => {
-                setNovoAmigo(res.data);
+                //setNovoAmigo(res.data);
+                console.log(res.data)
+                if(res.data != null){
+                    console.log("1")
+                    PostAmigo(res.data.user._id)
+                }
+
+            });
+        } catch (error) {
+        }
+    }
+
+    async function PostAmigo(id){
+        
+        const user2 = id;
+        console.log("2")
+        const data = {
+            user2
+        }
+        console.log("3")
+        try {
+            console.log("5")
+            api.post('amigos/', data).then(res => {
+                console.log(res.data.friend)
+                setAmigos(amigos.push(res.data.friend));
             });
         } catch (error) {
             
         }
-    }
-
-    function teste(){
-        console.log(novoAmigo)
-    }
-
-    function handleNovoAmigo(e){
-        e.preventDefault();
-        
-        buscarAmigo()
-        console.log(novoAmigo)
-
     }
 
     async function handleDelete(id){
@@ -89,7 +112,6 @@ export default function Amigos() {
                         />
                         <button type="submit">Adicionar</button>
                     </form>
-                    <button onClick={() => teste()}> teste </button>
 
                 </div>
                 <div id="lista-amigos">

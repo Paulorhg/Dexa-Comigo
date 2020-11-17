@@ -41,8 +41,7 @@ router.get('/:amigoEmail', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-
-        const { user2 } = req.body;
+        const user2  = req.body.user2;
         const accept = false; 
         const friend = await Friend.create({ user1: req.userId, user2, accept });
 
