@@ -4,3 +4,26 @@
     padding: 30px 0 65px 0;
     color: white !important;
 }
+
+#form-criar form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#form-criar label{
+    font-weight: 600;
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+#origem-teste{
+    margin-bottom: 5px;
+}
+
+#form-criar button{
+    margin-top: 10px;
+}

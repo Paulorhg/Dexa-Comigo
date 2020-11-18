@@ -7,6 +7,12 @@ import './listChurrasco.css'
 
 export default function listChurrasco(churrascos) {
 
+
+    function FormataData2(data){
+        var dataFormatada = data.substr(8,2) + "-" + data.substr(5,2) + "-" + data.substr(0,4)
+        return dataFormatada;
+    }
+
     return (
         <div id="lista">
             <ul>
@@ -17,7 +23,7 @@ export default function listChurrasco(churrascos) {
                                 <strong>Nome:</strong>
                                 <p>{churrasco.name}</p>
                                 <strong>Data:</strong>
-                                <p>{churrasco.date}</p>
+                                <p>{FormataData2(churrasco.date)}</p>
                             </div>
                         </Link>
                     </li>

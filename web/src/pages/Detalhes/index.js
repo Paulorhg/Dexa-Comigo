@@ -33,6 +33,11 @@ export default function Detalhes() {
         }
     }, [loggedUser, params.id]);
 
+    function FormataData2(data){
+        var dataFormatada = data.substr(8,2) + "-" + data.substr(5,2) + "-" + data.substr(0,4)
+        return dataFormatada;
+    }
+
     return (
         <Template>
             <div id="detalhes">
@@ -40,7 +45,7 @@ export default function Detalhes() {
                 <div id="header">
                     <h1 >Meus churrascos</h1>
                     <h2>{churrasco.churrasco.name}</h2>
-                    <h2>{churrasco.churrasco.date}</h2>
+                    <h2>{FormataData2(churrasco.churrasco.date)}</h2>
                 </div>
                : 
                <div id="header">

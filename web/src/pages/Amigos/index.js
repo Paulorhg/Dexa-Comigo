@@ -69,7 +69,6 @@ export default function Amigos() {
             console.log("5")
             api.post('amigos/', data).then(res => {
                 console.log(res.data.friend)
-                setAmigos(amigos.push(res.data.friend));
             });
         } catch (error) {
             
@@ -112,7 +111,6 @@ export default function Amigos() {
                         />
                         <button type="submit">Adicionar</button>
                     </form>
-
                 </div>
                 <div id="lista-amigos">
                     <h2>Lista de amigos</h2>
@@ -123,7 +121,6 @@ export default function Amigos() {
                                 <p>Nome: {nomeAmigo(amigo)}</p>
                                 <button type="button" onClick={() => handleDelete(amigo._id)}><FiTrash2 size={20} color="a8a8b3"/></button>
                             </div>
-
                         </li>
                     )) : <p>carregando</p>
                     }

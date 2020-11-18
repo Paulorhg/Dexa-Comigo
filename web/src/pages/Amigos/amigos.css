@@ -47,6 +47,10 @@
     margin-top: 50px;
 }
 
+#amigos #lista{
+    margin-top: 5px;
+}
+
 #amigos #lista div{
     padding: 25px 10px;
 }

@@ -11,8 +11,7 @@ router.use(authMiddleware);
 router.get('/', async (req, res) => {
     const user = req.userId;
     try {
-        const churrascos = await Churrasco.find( { owner: user } ).populate(['owner', 'itensquantity']);
-
+        const churrascos = await Churrasco.find({ owner: user }).populate(['owner', 'itensquantity']);
         return res.send({ churrascos });
     } catch (err) {
         return res.status(400).send({ error: 'Error loading churrascos' })
@@ -24,6 +23,36 @@ router.get('/:churrascoId', async (req, res) => {
         const churrasco = await Churrasco.findById(req.params.churrascoId).populate(['user', 'itensquantity']);
 
         return res.send({ churrasco });
+    } catch (err) {
+        return res.status(400).send({ error: 'Error loading churrasco' })
+    }
+});
+
+router.get('/passado/:dataHoje', async (req, res) => {
+    const user = req.userId;
+    try {
+        const churrascos = await Churrasco.find({
+            $and: [
+                { date: { $lt: req.params.dataHoje } },
+                { owner: user }
+            ]
+        }).populate(['user', 'itensquantity']);
+        return res.send({ churrascos });
+    } catch (err) {
+        return res.status(400).send({ error: 'Error loading churrasco' })
+    }
+});
+
+router.get('/futuro/:dataHoje', async (req, res) => {
+    const user = req.userId;
+    try {
+        const churrascos = await Churrasco.find({
+            $and: [
+                { date: { $gt: req.params.dataHoje } },
+                { owner: user }
+            ]
+        }).populate(['user', 'itensquantity']);
+        return res.send({ churrascos });
     } catch (err) {
         return res.status(400).send({ error: 'Error loading churrasco' })
     }

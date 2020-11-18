@@ -36,7 +36,6 @@ export default function Entrys() {
         <Template id="churrascos">
             <NavChurrasco />
             <ListChurrasco churrascos = {churrascos} />
-            
         </Template>
     );
 }
