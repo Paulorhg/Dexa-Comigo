@@ -36,6 +36,7 @@
     width: 300px;
     background-color:aliceblue;
     box-shadow: 3px 6px 4px rgba(50, 50, 50, 0.4);
+    margin-top: 5px;
 }
 
 #amigos #lista-amigos{
@@ -47,10 +48,6 @@
     margin-top: 50px;
 }
 
-#amigos #lista{
-    margin-top: 5px;
-}
-
 #amigos #lista div{
     padding: 25px 10px;
 }
@@ -59,6 +56,14 @@
     background-color:aliceblue;
     border: none;
     position: relative;
-    left: 250px;
+}
+
+#amigos #lista #deletar{
+    left: 240px;
+    bottom: 20px;
+}
+
+#amigos #lista #aceitar{
+    left: 230px;
     bottom: 20px;
 }

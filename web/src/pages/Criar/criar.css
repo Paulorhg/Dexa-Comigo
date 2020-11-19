@@ -20,10 +20,15 @@
 
 }
 
+#form-criar input{
+    margin-bottom: 5px;
+}
+
 #origem-teste{
     margin-bottom: 5px;
 }
 
 #form-criar button{
     margin-top: 10px;
+    margin-bottom: 5px;
 }

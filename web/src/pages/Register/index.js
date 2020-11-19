@@ -16,7 +16,7 @@ export default function Register() {
     const history = useHistory();
     const { addToast } = useToasts();
 
-    function handleRegister(e){
+    async function handleRegister(e){
         e.preventDefault();
 
         const data = {
@@ -25,12 +25,14 @@ export default function Register() {
             password
         };
 
-        api.post('auth/register', data)
+        await api.post('auth/register', data)
             .then(resp => resp.data)
             .then(resp => {
                 console.info(resp);
+                window.localStorage.setItem('jwt_token', resp.token);
+                window.localStorage.setItem('user', JSON.stringify(resp.user));
                 api.defaults.headers.common['Authorization'] = 'Bearer ' + resp.token;
-                history.push('/churrasco');
+                history.push('/churrascos');
             })
             .catch(error => {
                 console.error(error);

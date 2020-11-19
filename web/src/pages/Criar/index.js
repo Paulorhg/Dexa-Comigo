@@ -58,30 +58,27 @@ export default function Criar() {
     function removerCampos(idDestino){
         var node1 = document.getElementById(idDestino);
 
-        var ultimo = node1.getElementsByTagName('input').length - 1;
-
-        node1.removeChild(node1.childNodes[ultimo]);
+        var qtd = document.getElementById(idDestino).getElementsByTagName('input').length;
+        //valida conteudo do input 
+        if (qtd > 1) {
+            var ultimo = node1.getElementsByTagName('input').length - 1;
+            node1.removeChild(node1.childNodes[ultimo]);
+        }
     }
 
-    function controleBotao(){
+    // function controleBotao(){
 
-        document.getElementById("botao").disabled = true;
+    //     //cria um event listener que escuta mudanças no input
+    //     document.getElementById("destino-teste").addEventListener("destino-teste", function(event){
+    //     //busca conteúdo do input
+    //         var qtd = document.getElementById("destino-teste").getElementsByTagName('input').length;
 
-        //cria um event listener que escuta mudanças no input
-        document.getElementById("destino-teste").addEventListener("destino-teste", function(event){
-        //busca conteúdo do input
-            var qtd = document.getElementById("destino-teste").getElementsByTagName('input').length;
-
-            //valida conteudo do input 
-            if (qtd > 1) {
-            //habilita o botão
-            document.getElementById("botao").disabled = false;
-            } else {
-            //desabilita o botão se o conteúdo do input ficar em branco
-            document.getElementById("botao").disabled = true;
-            }
-        });
-    }
+    //         //valida conteudo do input 
+    //         if (qtd > 1) {
+    //         //habilita o botão
+    //         document.getElementById("botao").disabled = false;
+    //     });
+    // }
 
     return (
         <Template>
@@ -108,8 +105,8 @@ export default function Criar() {
                             required
                         />
                         <label>Participantes</label>
-                        <div id="destino-teste">
-                            <div id="origem-teste">
+                        <div id="destino-participantes">
+                            <div id="origem-participantes">
                                 <input 
                                     type="text"
                                     id="date"
@@ -119,8 +116,22 @@ export default function Criar() {
                                 />
                             </div>
                         </div>
-                        <button onClick={() => duplicarCampos("origem-teste", "destino-teste")}>mais</button>
-                        <button onClick={() => removerCampos("destino-teste")}>menos</button>
+                        <button onClick={() => duplicarCampos("origem-participantes", "destino-participantes")}>mais</button>
+                        <button id="botao" onClick={() => removerCampos("destino-participantes")}>menos</button>
+                        <label>Itens</label>
+                        <div id="destino-itens">
+                            <div id="origem-itens">
+                                <input 
+                                    type="text"
+                                    id="date"
+                                    onChange={e => setDate(e.target.value)}
+                                    value={date}
+                                    required
+                                />
+                            </div>
+                        </div>
+                        <button onClick={() => duplicarCampos("origem-itens", "destino-itens")}>mais</button>
+                        <button id="botao" onClick={() => removerCampos("destino-itens")}>menos</button>
                         <button type="submit">Criar</button>
                     </form>
                 </div>

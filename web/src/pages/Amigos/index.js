@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import {FiTrash2} from 'react-icons/fi'
+import {ImCheckmark} from 'react-icons/im'
 
 import Template from '../../components/Template'
 import api from '../../services/api'
@@ -11,6 +12,7 @@ import './amigos.css'
 export default function Amigos() {
 
     const params = useParams();
+    const history = useHistory();
     const [amigos, setAmigos] = useState([]);
     //const [user2, setUser2] = useState();
     //const [novoAmigo, setNovoAmigo] = useState();
@@ -67,9 +69,10 @@ export default function Amigos() {
         console.log("3")
         try {
             console.log("5")
-            api.post('amigos/', data).then(res => {
-                console.log(res.data.friend)
+            await api.post('amigos/', data).then(res => {
+                
             });
+            history.push('/amigos')
         } catch (error) {
             
         }
@@ -79,7 +82,7 @@ export default function Amigos() {
         try {
             await api.delete(`amigos/${id}`);
             amigos.map(amigo => console.log(amigo._id))
-            setAmigos(amigos.filter(amigo => amigo.friend._id !== id));
+            history.push('/amigos')
         } catch (error) {
             
         }
@@ -91,6 +94,15 @@ export default function Amigos() {
             return amigo.user2.name;
         }
         return amigo.user1.name;
+    }
+
+    async function handleAccept(amigo){
+        try {
+            await api.put(`amigos/${amigo._id}`);
+            history()
+        } catch (error) {
+            
+        }
     }
 
     return (
@@ -116,12 +128,32 @@ export default function Amigos() {
                     <h2>Lista de amigos</h2>
                     <ul>
                     { amigos.length !== 0 ? amigos.friend.map(amigo => (
+                        amigo.accept == true ?
                         <li id="lista" key={amigo._id}>
                             <div>
                                 <p>Nome: {nomeAmigo(amigo)}</p>
                                 <button type="button" onClick={() => handleDelete(amigo._id)}><FiTrash2 size={20} color="a8a8b3"/></button>
                             </div>
                         </li>
+                        : null
+                    )) : <p>carregando</p>
+                    }
+                    </ul>
+                    <h2>Amigos Pendentes</h2>
+                    <ul>
+                    { amigos.length !== 0 ? amigos.friend.map(amigo => (
+                        amigo.accept == false ?
+                        <li id="lista" key={amigo._id}>
+                            <div>
+                                <p>Nome: {nomeAmigo(amigo)}</p>
+                                {amigo.user2._id == user._id ? 
+                                    <button id="aceitar" onClick={() => handleAccept(amigo)}><ImCheckmark size={20} color="" /></button>
+                                    : null
+                                }
+                                <button id="deletar" type="button" onClick={() => handleDelete(amigo._id)}><FiTrash2 size={20} color="a8a8b3"/></button>
+                            </div>
+                        </li>
+                        : null
                     )) : <p>carregando</p>
                     }
                     </ul>
