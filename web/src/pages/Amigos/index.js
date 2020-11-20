@@ -98,8 +98,17 @@ export default function Amigos() {
 
     async function handleAccept(amigo){
         try {
-            await api.put(`amigos/${amigo._id}`);
-            history()
+
+            const accept = true;
+
+            const data = {
+                accept
+            }
+            await api.put(`amigos/${amigo._id}`, data).then(res => {
+                console.log(res.data);
+                history('amigos/')
+            });
+            
         } catch (error) {
             
         }
@@ -126,7 +135,7 @@ export default function Amigos() {
                 </div>
                 <div id="lista-amigos">
                     <h2>Lista de amigos</h2>
-                    <ul>
+                    <ul id="confirmados">
                     { amigos.length !== 0 ? amigos.friend.map(amigo => (
                         amigo.accept == true ?
                         <li id="lista" key={amigo._id}>
@@ -140,7 +149,7 @@ export default function Amigos() {
                     }
                     </ul>
                     <h2>Amigos Pendentes</h2>
-                    <ul>
+                    <ul id="pendentes">
                     { amigos.length !== 0 ? amigos.friend.map(amigo => (
                         amigo.accept == false ?
                         <li id="lista" key={amigo._id}>

@@ -58,7 +58,7 @@ router.put('/:amigoId', async (req, res) => {
 
         const { accept } = req.body;
 
-        const friend = await Friend.findByIdAndUpdate(req.params.friendId, { accept }, { new: true });
+        const friend = await Friend.findByIdAndUpdate(req.params.amigoId, { accept }, { new: true });
 
         await friend.save();
 
