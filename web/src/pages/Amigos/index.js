@@ -106,7 +106,13 @@ export default function Amigos() {
             }
             await api.put(`amigos/${amigo._id}`, data).then(res => {
                 console.log(res.data);
-                history('amigos/')
+                amigos.friend.map(amigoAlterado => {
+                    if(amigoAlterado._id === amigo._id){
+                        amigo.accept = true;
+                        console.log(amigoAlterado);
+                    }
+                    setAmigos(amigos);
+                })
             });
             
         } catch (error) {

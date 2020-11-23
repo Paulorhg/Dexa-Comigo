@@ -14,7 +14,7 @@ export default function Criar() {
     const [date, setDate] = useState();
     const [participantes, setParticipantes] = useState([]);
     const [itensQuantity, setItensQuantity] = useState([]);
-    const [amigos, setAmigos] = useState([]);
+    let amigos;
 
     useEffect(() => {
         try {
@@ -29,7 +29,11 @@ export default function Criar() {
     useEffect(() => {
         try {
             api.get('amigos', {}).then(res => {
-                setAmigos(res.data);
+                console.log("1")
+                amigos = res.data;
+                console.log("2")
+                console.log(amigos);
+                listaAmigos(res.data.friend);
             })
         } catch (error) {
 
@@ -43,17 +47,19 @@ export default function Criar() {
         return amigo.user1.name;
     }
 
-    // function listaAmigos(){
-    //     var lista = document.getElementById("amigos-list");
+    function listaAmigos(amigos){
+        console.log(amigos);
+        var lista = document.getElementById("amigos-list");
 
-    //     amigos.forEach(amigo => {
-            
-    //         var option = createElement("OPTION");
-    //         option.value = amigo._id;
-    //         option.
-    //         lista.appendChild('<option value = ${amigo._id}>')
-    //     })
-    // }
+        amigos.forEach(amigo => {
+        
+            var option = createElement('option');
+            // option.innerHTML = nomeAmigo(amigo);
+            // option.nodeValue = amigo._id;
+            // lista.appendChild(option)
+        })
+        
+    }
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -138,15 +144,14 @@ export default function Criar() {
                                     list="amigos-list"
                                     required
                                 />
-                                {/*
+                                
                                 <datalist id="amigos-list">
                                 </datalist>
-                                 {amigos.length != 0 ?  listaAmigos() : null} */}
                             </div>
                         </div>
                         <div class= "botoes">
-                            <button onClick={() => duplicarCampos("origem-participantes", "destino-participantes")}>mais</button>
-                            <button id="botao" onClick={() => removerCampos("destino-participantes")}>menos</button>
+                            <button onClick={() => duplicarCampos("origem-participantes", "destino-participantes")}>Adicionar</button>
+                            <button id="botao" onClick={() => removerCampos("destino-participantes")}>Remover</button>
                         </div>
                         <label>Itens</label>
                         <div id="destino-itens">
@@ -161,10 +166,10 @@ export default function Criar() {
                             </div>
                         </div>
                         <div class="botoes">
-                            <button onClick={() => duplicarCampos("origem-itens", "destino-itens")}>mais</button>
-                            <button id="botao" onClick={() => removerCampos("destino-itens")}>menos</button>
+                            <button onClick={() => duplicarCampos("origem-itens", "destino-itens")}>Adicionar</button>
+                            <button id="botao" onClick={() => removerCampos("destino-itens")}>Remover</button>
                         </div>
-                        <button type="submit">Criar</button>
+                        <button type="submit">Criar Churrasco!</button>
                     </form>
                 </div>
             </div>
