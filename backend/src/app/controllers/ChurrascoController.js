@@ -61,9 +61,9 @@ router.get('/futuro/:dataHoje', async (req, res) => {
 router.post('/', async (req, res) => {
     try {
 
-        const { name, date, itensquantity } = req.body;
+        const { name, date, participantes, itensquantity } = req.body;
 
-        const churrasco = await Churrasco.create({ name, date, owner: req.userId });
+        const churrasco = await Churrasco.create({ name, date, participantes, owner: req.userId });
 
         await Promise.all(itensquantity.map(async itemquantity => {
             const churrascoItens = new ItensQuantity({ ...itemquantity, churrasco: churrasco._id });
