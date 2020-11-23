@@ -28,6 +28,11 @@
     margin-bottom: 5px;
 }
 
+.botoes {
+    display: flex;
+    column-gap: 10px;
+}
+
 #form-criar button{
     margin-top: 10px;
     margin-bottom: 5px;
