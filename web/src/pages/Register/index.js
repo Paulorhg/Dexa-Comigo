@@ -5,7 +5,7 @@ import { useToasts } from 'react-toast-notifications'
 import api from '../../services/api'
 
 import './register.css'
-import churrasqueira from '../../assets/churrasqueira.jpg'
+import churrasqueira from '../../assets/churrasqueira.jpg'  
 
 export default function Register() {
 

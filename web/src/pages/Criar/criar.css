@@ -5,15 +5,25 @@
     color: white !important;
 }
 
+
 #arrumar-itens{
-    margin-left: 300px;
+    margin-left: 1000px;
+    margin-top: -345px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 }
 
 #form-criar form{
+    margin-left: -500px;
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
+
 }
 
 #form-criar label{
@@ -22,6 +32,11 @@
     margin-top: 20px;
     margin-bottom: 20px;
 
+}
+
+#btn-criar{
+    margin-top: 330px;
+    margin-left: 400px;
 }
 
 #form-criar input{
@@ -34,10 +49,10 @@
 
 .botoes {
     display: flex;
-    column-gap: 10px;
+    column-gap: 20px;
 }
 
 #form-criar button{
-    margin-top: 10px;
+    margin-top: 20px;
     margin-bottom: 5px;
 }

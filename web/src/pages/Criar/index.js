@@ -4,6 +4,11 @@ import Template from '../../components/Template'
 import api from '../../services/api'
 
 import './criar.css'
+import carne from '../../assets/carne.png'
+import cerveja from '../../assets/cerveja.jpg'
+import linguica from '../../assets/linguica.png'
+import frango from '../../assets/frango.png'
+import refrigerante from '../../assets/refrigerante.png'
 
 export default function Criar() {
 
@@ -155,7 +160,16 @@ export default function Criar() {
                         </div>
                         <div id="arrumar-itens">
                         <label>Itens</label>
+
                         <div id="destino-itens">
+                       
+                        <img id="carne" src={carne} alt="carne"/>
+                        <img id="cerveja" src={cerveja} alt="cerveja"/>
+                        <img id="linguica" src={linguica} alt="linguica"/>
+                        <img id="frango" src={frango} alt="frango"/>
+                        <img id="refrigerante" src={refrigerante} alt="refrigerante"/>
+
+
                             <div id="origem-itens">
                                 <input 
                                     type="text"
@@ -171,7 +185,9 @@ export default function Criar() {
                             <button id="botao" onClick={() => removerCampos("destino-itens")}>Remover</button>
                         </div>
                         </div>
+                        <div id = "btn-criar">
                         <button type="submit">Criar Churrasco!</button>
+                        </div>
                     </form>
                 </div>
             </div>
