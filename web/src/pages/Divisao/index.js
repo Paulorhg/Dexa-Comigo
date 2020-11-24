@@ -45,7 +45,7 @@ export default function Divisao() {
                 <h1>Divisão de contas</h1>
 
                 <form id="addConta" action="" method="post" onSubmit={handleSubmit}>
-                    <label htmlFor="nome">Nome da conta</label>
+                    <label htmlFor="nome">Nome</label>
                     <input 
                         type="text"
                         value={name}

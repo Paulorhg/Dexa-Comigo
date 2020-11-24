@@ -5,6 +5,10 @@
     color: white !important;
 }
 
+#arrumar-itens{
+    margin-left: 300px;
+}
+
 #form-criar form{
     display: flex;
     flex-direction: column;

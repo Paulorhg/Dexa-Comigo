@@ -153,6 +153,7 @@ export default function Criar() {
                             <button onClick={() => duplicarCampos("origem-participantes", "destino-participantes")}>Adicionar</button>
                             <button id="botao" onClick={() => removerCampos("destino-participantes")}>Remover</button>
                         </div>
+                        <div id="arrumar-itens">
                         <label>Itens</label>
                         <div id="destino-itens">
                             <div id="origem-itens">
@@ -168,6 +169,7 @@ export default function Criar() {
                         <div class="botoes">
                             <button onClick={() => duplicarCampos("origem-itens", "destino-itens")}>Adicionar</button>
                             <button id="botao" onClick={() => removerCampos("destino-itens")}>Remover</button>
+                        </div>
                         </div>
                         <button type="submit">Criar Churrasco!</button>
                     </form>
