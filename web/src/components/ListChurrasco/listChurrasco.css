@@ -22,21 +22,22 @@
 
 #lista ul{
     margin-top: 30px;
-    margin-left: 15px;
+    margin-left: 50px;
     padding-bottom: 10px;
 }
 
 #lista li{
-    background-color:aliceblue;
-    width: 300px;
-    height: 220px;
+    background-image: url("fundo_churras.jpg");
+    background-color: "back";
+    width: 350px;
+    height: 180px;
     margin: 0px 10px 30px 20px;
     
     border: 1px solid #000000;
-    border-radius: 2%;
+    border-radius: 5%;
     font-size: 12px;
     box-shadow: 3px 6px 3px rgba(50, 50, 50, 0.27);
-    transition: 0.05s;
+    transition: 0.1s;
 }
 
 #lista li p{

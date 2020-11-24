@@ -147,7 +147,7 @@ export default function Amigos() {
                         <li id="lista" key={amigo._id}>
                             <div>
                                 <p>Nome: {nomeAmigo(amigo)}</p>
-                                <button type="button" onClick={() => handleDelete(amigo._id)}><FiTrash2 size={20} color="a8a8b3"/></button>
+                                <button id="deletar" type="button" onClick={() => handleDelete(amigo._id)}><FiTrash2 size={20} color="a8a8b3"/></button>
                             </div>
                         </li>
                         : null

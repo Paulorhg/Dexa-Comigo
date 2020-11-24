@@ -4,12 +4,13 @@ import { Link, useRouteMatch } from 'react-router-dom';
 import api from '../../services/api'
 
 import './listChurrasco.css'
+//import fundo_churrasco from '../../assets/fundo_churrasco.jpg'
 
 export default function listChurrasco(churrascos) {
 
 
     function FormataData2(data){
-        var dataFormatada = data.substr(8,2) + "-" + data.substr(5,2) + "-" + data.substr(0,4)
+        var dataFormatada = data.substr(8,2) + "/" + data.substr(5,2) + "/" + data.substr(0,4)
         return dataFormatada;
     }
 
@@ -20,10 +21,11 @@ export default function listChurrasco(churrascos) {
                     <li key={churrasco._id}>
                         <Link to={`/churrasco/${churrasco._id}`}>
                             <div id="link">
-                                <strong>Nome:</strong>
-                                <p>{churrasco.name}</p>
-                                <strong>Data:</strong>
-                                <p>{FormataData2(churrasco.date)}</p>
+                            <strong><center><u><font face="New Century Schoolbook"> NOME DO CHURRASCO </font></u></center></strong>
+                                <p><center>{churrasco.name}</center></p>
+                                <strong><center><u>DATA</u></center></strong>
+                                <p><center>{FormataData2(churrasco.date)}</center></p>
+                                
                             </div>
                         </Link>
                     </li>
