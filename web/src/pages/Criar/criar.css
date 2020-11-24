@@ -35,7 +35,7 @@
 }
 
 #btn-criar{
-    margin-top: 330px;
+    margin-top: 30px;
     margin-left: 400px;
 }
 
@@ -55,4 +55,70 @@
 #form-criar button{
     margin-top: 20px;
     margin-bottom: 5px;
+}
+
+#carne{
+    max-width:12%;
+    height: auto;
+    margin-left: 300px;
+    transform: rotate(360deg);
+}
+#escrita-carne{
+    margin-left: 400px;
+    margin-top: -50px;
+    font-size: xx-large !important;
+}
+
+
+
+#cerveja{
+    max-width:10%;
+    height: auto;
+    margin-left: 300px;
+    margin-top:20px;
+}
+#escrita-cerveja{
+    margin-left: 400px;
+    margin-top: -50px;
+}
+
+
+#frango{
+    max-width:10%;
+    height: auto;
+    margin-left: 300px;
+}
+#escrita-frango{
+    margin-left: 400px;
+    margin-top: -50px;
+}
+
+
+#linguica{
+    max-width:12%;
+    height: auto;
+    margin-left: 300px;
+    margin-top:20px;
+}
+#escrita-linguica{
+    margin-left: 400px;
+    margin-top: -50px;
+}
+
+
+#refrigerante{
+    max-width:10%;
+    height: auto;
+    margin-left: 300px;
+}
+#escrita-refrigerante{
+    margin-left: 400px;
+    margin-top: -50px;
+}
+
+
+#destino-itens{
+    font-weight: 10;
+    font-size: 6px;
+
 }

@@ -158,18 +158,51 @@ export default function Criar() {
                             <button onClick={() => duplicarCampos("origem-participantes", "destino-participantes")}>Adicionar</button>
                             <button id="botao" onClick={() => removerCampos("destino-participantes")}>Remover</button>
                         </div>
+
+
                         <div id="arrumar-itens">
                         <label>Itens</label>
 
                         <div id="destino-itens">
+                        <div >
+                         <img id="carne" src={carne} alt="carne"/>
+                            <div id="escrita-carne">
+                                <h3> Quantidade: </h3>
+                                <h3> Valor Total: </h3>
+                            </div>
+                        </div>
+                        <div >
+                         <img id="cerveja" src={cerveja} alt="cerveja"/>
+                         <div id="escrita-cerveja">
+                                <h3> Quantidade: </h3>
+                                <h3> Valor Total: </h3>
+                            </div>
+                        </div>
+                        <div >
+                         <img id="linguica" src={linguica} alt="linguica"/>
+                         <div id="escrita-linguica">
+                                <h3> Quantidade: </h3>
+                                <h3> Valor Total: </h3>
+                            </div>
+                        </div>
+                        <div >
+                          <img id="frango" src={frango} alt="frango"/>
+                          <div id="escrita-frango">
+                                <h3> Quantidade: </h3>
+                                <h3> Valor Total: </h3>
+                            </div>
+                        </div>
+                        <div >
+                         <img id="refrigerante" src={refrigerante} alt="refrigerante"/>
+                         <div id="escrita-refrigerante">
+                                <h3> Quantidade: </h3>
+                                <h3> Valor Total: </h3>
+                            </div>
+                        </div>
                        
-                        <img id="carne" src={carne} alt="carne"/>
-                        <img id="cerveja" src={cerveja} alt="cerveja"/>
-                        <img id="linguica" src={linguica} alt="linguica"/>
-                        <img id="frango" src={frango} alt="frango"/>
-                        <img id="refrigerante" src={refrigerante} alt="refrigerante"/>
 
 
+                            {/*
                             <div id="origem-itens">
                                 <input 
                                     type="text"
@@ -183,8 +216,10 @@ export default function Criar() {
                         <div class="botoes">
                             <button onClick={() => duplicarCampos("origem-itens", "destino-itens")}>Adicionar</button>
                             <button id="botao" onClick={() => removerCampos("destino-itens")}>Remover</button>
+                        </div>*/}
                         </div>
                         </div>
+                            
                         <div id = "btn-criar">
                         <button type="submit">Criar Churrasco!</button>
                         </div>
