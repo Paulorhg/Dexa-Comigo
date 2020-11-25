@@ -1,25 +1,70 @@
+const express = require('express');
+const authMiddleware = require('../middlewares/auth');
 
-/*
-module.exports = {
-    async index(request, response) {
-        const itemQuantidade = await connection('itemQuantidade').select('*');
+const ItemQuantity = require('../Model/ItemQuantity');
 
-        return response.json(itemQuantidade);
-    },
+const router = express.Router();
 
-    async create(request, response) {
-        const { amount } = request.body;
-        const guest_id = request.headers.guest;
-        const item_id = request.headers.item;
+router.use(authMiddleware);
 
-        const [id] = await connection('itemQuantidade').insert({
-            guest_id,
-            item_id,
-            amount
-        });
+router.get('/', async (req, res) => {
+    try {
+        const itensQuant = await ItemQuantity.find();
 
-        return response.json({ id });
+        return res.send({ itensQuant });
+    } catch (err) {
+        return res.status(400).send({ error: 'Error loading itens' })
     }
-}
+});
 
-*/
+router.get('/:itemQuantId', async (req, res) => {
+    try {
+        const itemQuant = await ItemQuantity.findById(req.params.itemQuantId);
+
+        return res.send({ itemQuant });
+    } catch (err) {
+        return res.status(400).send({ error: 'Error loading item' })
+    }
+});
+
+router.post('/', async (req, res) => {
+    try {
+
+        const { item, quantity } = req.body;
+
+        const itemQuant = await ItemQuantity.create({ item, quantity});
+
+        await itemQuant.save();
+
+        return res.send({ itemQuant });
+    } catch (err) {
+        return res.status(400).send({ error: 'Error creating new item' })
+    }
+});
+
+router.put('/:itemQuantId', async (req, res) => {
+    try {
+
+        const { item, quantity } = req.body;
+
+        const itemQuant = await ItemQuantity.findByIdAndUpdate(req.params.itemQuantId, { item, quantity }, { new: true });
+
+        await itemQuant.save();
+
+        return res.send({ itemQuant });
+    } catch (err) {
+        return res.status(400).send({ error: 'Error updating item' })
+    }
+});
+
+router.delete('/:itemQuantId', async (req, res) => {
+    try {
+        await ItemQuantity.findByIdAndRemove(req.params.itemQuantId);
+
+        return res.send();
+    } catch (err) {
+        return res.status(400).send({ error: 'Error deleting item' })
+    }
+});
+
+module.exports = app => app.use('/itemQuant', router);

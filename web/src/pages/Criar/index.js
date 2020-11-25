@@ -14,31 +14,35 @@ export default function Criar() {
 
     const loggedUser = window.localStorage.getItem('user');
     const user = JSON.parse(loggedUser);
-    const [itens, setItens] = useState([]);
     const [name, setName] = useState();
     const [date, setDate] = useState();
     const [participantes, setParticipantes] = useState([]);
-    const [itensQuantity, setItensQuantity] = useState([]);
-    let amigos;
+    const [qtdCarne, setCarne] = useState();
+    const [qtdCerveja, setCerveja] = useState();
+    const [qtdLinguica, setLinguica] = useState();
+    const [qtdFrango, setFrango] = useState();
+    const [qtdRefri, setRefri] = useState();
+    const [amigos, setAmigos] = useState();
+    //var amigos;
 
     useEffect(() => {
-        try {
-            api.get('itens', {}).then(res => {
-                setItens(res.data);
-            })
-        } catch (error) {
+        // try {
+        //     api.get('itens', {}).then(res => {
+        //         setItens(res.data);
+        //     })
+        // } catch (error) {
 
-        }
+        // }
     }, [loggedUser]);
 
     useEffect(() => {
         try {
             api.get('amigos', {}).then(res => {
                 console.log("1")
-                amigos = res.data;
+                setAmigos(res.data);
                 console.log("2")
                 console.log(amigos);
-                listaAmigos(res.data.friend);
+               // listaAmigos(res.data.friend);
             })
         } catch (error) {
 
@@ -50,6 +54,13 @@ export default function Criar() {
             return amigo.user2.name;
         }
         return amigo.user1.name;
+    }
+
+    function idAmigo(amigo){
+        if(amigo.user1._id === user._id){
+            return amigo.user2._id;
+        }
+        return amigo.user1._id;
     }
 
     function listaAmigos(amigos){
@@ -66,8 +77,42 @@ export default function Criar() {
         
     }
 
+    function PegaItens(){
+        let item = "Carne";
+        let quantity = qtdCarne;
+        var itensQuantity = [];
+
+        itensQuantity.push({ item, quantity})
+
+        item = "Cerveja";
+        quantity = qtdCerveja;
+
+        itensQuantity.push({ item, quantity})
+
+        item = "Linguica";
+        quantity = qtdLinguica;
+
+        itensQuantity.push({ item, quantity})
+
+        item = "Frango";
+        quantity = qtdFrango;
+
+        itensQuantity.push({ item, quantity})
+
+        item = "Refrigerante";
+        quantity = qtdRefri;
+
+        itensQuantity.push({ item, quantity})
+   
+        console.log(itensQuantity);
+
+        return itensQuantity
+    }
+
     function handleSubmit(e) {
         e.preventDefault();
+
+        let itensQuantity = PegaItens()
 
         const data = {
             name,
@@ -127,7 +172,7 @@ export default function Criar() {
                             type="text"
                             id="name"
                             onChange={e => setName(e.target.value)}
-                            value={name}
+                            //value={name}
                             required
                         />
                         <label>Data</label>
@@ -135,7 +180,7 @@ export default function Criar() {
                             type="date"
                             id="date"
                             onChange={e => setDate(e.target.value)}
-                            value={date}
+                            //value={date}
                             required
                         />
                         <label>Participantes</label>
@@ -145,18 +190,27 @@ export default function Criar() {
                                     type="text"
                                     id="participantes"
                                     onChange={e => setParticipantes(e.target.value)}
-                                    value={participantes}
+                                    //value={participantes}
                                     list="amigos-list"
                                     required
                                 />
                                 
                                 <datalist id="amigos-list">
+                                { 
+                                    amigos.length !== 0 ? amigos.friend.map(amigo => (
+                                        amigo.accept == true ?
+                                        <option id="lista" key={amigo._id} value={idAmigo(amigo)}>
+                                                <p>Nome: {nomeAmigo(amigo)}</p>
+                                        </option>
+                                        : null
+                                    )) : <p>Carregando...</p>
+                                }
                                 </datalist>
                             </div>
                         </div>
                         <div class= "botoes">
-                            <button id="botaoAdd" onClick={() => duplicarCampos("origem-participantes", "destino-participantes")}> + </button>
-                            <button id="botaoRem" onClick={() => removerCampos("destino-participantes")}> - </button>
+                            <button type="button" id="botaoAdd" onClick={() => duplicarCampos("origem-participantes", "destino-participantes")}> + </button>
+                            <button type="button" id="botaoRem" onClick={() => removerCampos("destino-participantes")}> - </button>
                         </div>
 
 
@@ -168,34 +222,68 @@ export default function Criar() {
                          <img id="carne" src={carne} alt="carne"/>
                             <div id="escrita-carne">
                                 <h3> Quantidade: </h3>
+                                <input 
+                                    id="input-carne" 
+                                    type="number" 
+                                    placeholder="Quilos"
+                                    onChange={e => setCarne(e.target.value)}
+                                    />
                                 <h3> Valor Total: </h3>
                             </div>
                         </div>
+
                         <div >
-                         <img id="cerveja" src={cerveja} alt="cerveja"/>
-                         <div id="escrita-cerveja">
+                            <img id="cerveja" src={cerveja} alt="cerveja"/>
+                            <div id="escrita-cerveja">
                                 <h3> Quantidade: </h3>
+                                <input 
+                                    id="input-cerveja" 
+                                    type="number" 
+                                    placeholder="Litros"
+                                    onChange={e => setCerveja(e.target.value)}
+                                    />
                                 <h3> Valor Total: </h3>
                             </div>
                         </div>
+
                         <div >
                          <img id="linguica" src={linguica} alt="linguica"/>
                          <div id="escrita-linguica">
                                 <h3> Quantidade: </h3>
+                                <input 
+                                    id="input-linguiça" 
+                                    type="number" 
+                                    placeholder="Quilos"
+                                    onChange={e => setLinguica(e.target.value)}
+                                />
                                 <h3> Valor Total: </h3>
                             </div>
                         </div>
+
                         <div >
-                          <img id="frango" src={frango} alt="frango"/>
-                          <div id="escrita-frango">
+                            <img id="frango" src={frango} alt="frango"/>
+                            <div id="escrita-frango">
                                 <h3> Quantidade: </h3>
+                                <input 
+                                    id="input-frango" 
+                                    type="number" 
+                                    placeholder="Quilos"
+                                    onChange={e => setFrango(e.target.value)}
+                                />
                                 <h3> Valor Total: </h3>
                             </div>
                         </div>
+
                         <div >
-                         <img id="refrigerante" src={refrigerante} alt="refrigerante"/>
-                         <div id="escrita-refrigerante">
+                            <img id="refrigerante" src={refrigerante} alt="refrigerante"/>
+                            <div id="escrita-refrigerante">
                                 <h3> Quantidade: </h3>
+                                <input 
+                                    id="input-refrigerante" 
+                                    type="number" 
+                                    placeholder="Litros"
+                                    onChange={e => setRefri(e.target.value)}
+                                />
                                 <h3> Valor Total: </h3>
                             </div>
                         </div>

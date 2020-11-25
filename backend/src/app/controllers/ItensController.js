@@ -9,7 +9,7 @@ router.use(authMiddleware);
 
 router.get('/', async (req, res) => {
     try {
-        const itens = await Item.find().populate(['user']);
+        const itens = await Item.find();
 
         return res.send({ itens });
     } catch (err) {
@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:itemId', async (req, res) => {
     try {
-        const item = await item.findById(req.params.itemId).populate(['user']);
+        const item = await Item.findById(req.params.itemId);
 
         return res.send({ item });
     } catch (err) {
@@ -32,7 +32,7 @@ router.post('/', async (req, res) => {
 
         const { name, price } = req.body;
 
-        const item = await Item.create({ name, price, user: req.userId });
+        const item = await Item.create({ name, price});
 
         await item.save();
 
@@ -47,7 +47,7 @@ router.put('/:itemId', async (req, res) => {
 
         const { name, price } = req.body;
 
-        const item = await item.findByIdAndUpdate(req.params.itemId, { name, price }, { new: true });
+        const item = await Item.findByIdAndUpdate(req.params.itemId, { name, price }, { new: true });
 
         await item.save();
 
@@ -59,7 +59,7 @@ router.put('/:itemId', async (req, res) => {
 
 router.delete('/:itemId', async (req, res) => {
     try {
-        await item.findByIdAndRemove(req.params.itemId);
+        await Item.findByIdAndRemove(req.params.itemId);
 
         return res.send();
     } catch (err) {
