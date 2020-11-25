@@ -1,5 +1,5 @@
 #side-menu {
-    display: flex;
+    display: table;
     flex-direction: column;
     width: 300px;
     padding: 1rem;

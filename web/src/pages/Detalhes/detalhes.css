@@ -19,3 +19,103 @@
     display: flex;
     justify-content: center;
 }
+
+#arrumar-itens1{
+    margin-left: 500px;
+    margin-top: -50px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+#form-criar form{
+    margin-left: -400px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+
+}
+
+#caracteristica{
+    margin-left: 300px;
+}
+
+
+
+#form-criar input{
+    margin-bottom: 10x;
+}
+
+#origem-teste{
+    margin-bottom: 5px;
+}
+
+#carne{
+    max-width:12%;
+    height: auto;
+    margin-left: 300px;
+    transform: rotate(360deg);
+}
+#escrita-carne{
+    margin-left: 400px;
+    margin-top: -50px;
+    font-size: xx-large !important;
+}
+
+
+
+#cerveja{
+    max-width:10%;
+    height: auto;
+    margin-left: 300px;
+    margin-top:20px;
+}
+#escrita-cerveja{
+    margin-left: 400px;
+    margin-top: -50px;
+}
+
+
+#frango{
+    max-width:10%;
+    height: auto;
+    margin-left: 300px;
+}
+#escrita-frango{
+    margin-left: 400px;
+    margin-top: -50px;
+}
+
+
+#linguica{
+    max-width:12%;
+    height: auto;
+    margin-left: 300px;
+    margin-top:20px;
+}
+#escrita-linguica{
+    margin-left: 400px;
+    margin-top: -50px;
+}
+
+
+#refrigerante{
+    max-width:10%;
+    height: auto;
+    margin-left: 300px;
+}
+#escrita-refrigerante{
+    margin-left: 400px;
+    margin-top: -50px;
+}
+
+
+#destino-itens{
+    font-weight: 10;
+    font-size: 6px;
+
+}
