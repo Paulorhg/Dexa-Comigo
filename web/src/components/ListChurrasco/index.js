@@ -29,7 +29,7 @@ export default function listChurrasco(churrascos) {
                             </div>
                         </Link>
                     </li>
-                )) : <p>carregando</p>
+                )) : <p>Carregando...</p>
                 }
             </ul>
         </div>

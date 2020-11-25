@@ -151,7 +151,7 @@ export default function Amigos() {
                             </div>
                         </li>
                         : null
-                    )) : <p>carregando</p>
+                    )) : <p>Carregando...</p>
                     }
                     </ul>
                     <h2>Amigos Pendentes</h2>
@@ -169,7 +169,7 @@ export default function Amigos() {
                             </div>
                         </li>
                         : null
-                    )) : <p>carregando</p>
+                    )) : <p>Carregando...</p>
                     }
                     </ul>
                 </div>

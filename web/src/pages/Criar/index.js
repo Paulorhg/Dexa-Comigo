@@ -5,7 +5,7 @@ import api from '../../services/api'
 
 import './criar.css'
 import carne from '../../assets/carne.png'
-import cerveja from '../../assets/cerveja.jpg'
+import cerveja from '../../assets/cerveja.png'
 import linguica from '../../assets/linguica.png'
 import frango from '../../assets/frango.png'
 import refrigerante from '../../assets/refrigerante.png'
@@ -155,8 +155,8 @@ export default function Criar() {
                             </div>
                         </div>
                         <div class= "botoes">
-                            <button onClick={() => duplicarCampos("origem-participantes", "destino-participantes")}>Adicionar</button>
-                            <button id="botao" onClick={() => removerCampos("destino-participantes")}>Remover</button>
+                            <button id="botaoAdd" onClick={() => duplicarCampos("origem-participantes", "destino-participantes")}> + </button>
+                            <button id="botaoRem" onClick={() => removerCampos("destino-participantes")}> - </button>
                         </div>
 
 
@@ -221,7 +221,7 @@ export default function Criar() {
                         </div>
                             
                         <div id = "btn-criar">
-                        <button type="submit">Criar Churrasco!</button>
+                        <button id="botaoCriar" type="submit">Criar Churrasco!</button>
                         </div>
                     </form>
                 </div>
