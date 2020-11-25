@@ -16,13 +16,13 @@ export default function Criar() {
     const user = JSON.parse(loggedUser);
     const [name, setName] = useState();
     const [date, setDate] = useState();
-    const [participantes, setParticipantes] = useState([]);
+    var participantes = [];
     const [qtdCarne, setCarne] = useState();
     const [qtdCerveja, setCerveja] = useState();
     const [qtdLinguica, setLinguica] = useState();
     const [qtdFrango, setFrango] = useState();
     const [qtdRefri, setRefri] = useState();
-    const [amigos, setAmigos] = useState();
+    const [amigos, setAmigos] = useState([]);
     //var amigos;
 
     useEffect(() => {
@@ -38,10 +38,7 @@ export default function Criar() {
     useEffect(() => {
         try {
             api.get('amigos', {}).then(res => {
-                console.log("1")
                 setAmigos(res.data);
-                console.log("2")
-                console.log(amigos);
                // listaAmigos(res.data.friend);
             })
         } catch (error) {
@@ -63,19 +60,18 @@ export default function Criar() {
         return amigo.user1._id;
     }
 
-    function listaAmigos(amigos){
-        console.log(amigos);
-        var lista = document.getElementById("amigos-list");
+    // function listaAmigos(amigos){
+    //     console.log(amigos);
+    //     var lista = document.getElementById("amigos-list");
 
-        amigos.forEach(amigo => {
+    //     amigos.forEach(amigo => {
         
-            var option = createElement('option');
-            // option.innerHTML = nomeAmigo(amigo);
-            // option.nodeValue = amigo._id;
-            // lista.appendChild(option)
-        })
-        
-    }
+    //         var option = createElement('option');
+    //         // option.innerHTML = nomeAmigo(amigo);
+    //         // option.nodeValue = amigo._id;
+    //         // lista.appendChild(option)
+    //     })
+    // }
 
     function PegaItens(){
         let item = "Carne";
@@ -114,12 +110,16 @@ export default function Criar() {
 
         let itensQuantity = PegaItens()
 
+        console.log(participantes);
+
         const data = {
             name,
             date,
             participantes,
             itensQuantity
         }
+
+        console.log(data)
     }
 
     function duplicarCampos(idOrigem, idDestino){
@@ -189,7 +189,7 @@ export default function Criar() {
                                 <input 
                                     type="text"
                                     id="participantes"
-                                    onChange={e => setParticipantes(e.target.value)}
+                                    onChange={e => participantes.push(e.target.value)}
                                     //value={participantes}
                                     list="amigos-list"
                                     required
@@ -199,16 +199,16 @@ export default function Criar() {
                                 { 
                                     amigos.length !== 0 ? amigos.friend.map(amigo => (
                                         amigo.accept == true ?
-                                        <option id="lista" key={amigo._id} value={idAmigo(amigo)}>
-                                                <p>Nome: {nomeAmigo(amigo)}</p>
+                                        <option id="opcoes" key={amigo._id} value={idAmigo(amigo)}>
+                                            {nomeAmigo(amigo)}
                                         </option>
                                         : null
-                                    )) : <p>Carregando...</p>
+                                    )) : null
                                 }
                                 </datalist>
                             </div>
                         </div>
-                        <div class= "botoes">
+                        <div className= "botoes">
                             <button type="button" id="botaoAdd" onClick={() => duplicarCampos("origem-participantes", "destino-participantes")}> + </button>
                             <button type="button" id="botaoRem" onClick={() => removerCampos("destino-participantes")}> - </button>
                         </div>
