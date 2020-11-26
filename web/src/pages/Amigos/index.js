@@ -77,6 +77,15 @@ export default function Amigos() {
             await api.delete(`amigos/${id}`);
             amigos.map(amigo => console.log(amigo._id))
             amigos.filter(amigo => amigo._id != id)
+
+            //testar
+            // componentDidUpdate(prevProps, prevState) {
+            //     if (prevState.pokemons !== this.state.pokemons) {
+            //       console.log('pokemons state has changed.')
+            //     }
+            //   }
+
+            //ou ReactDOM.render
         } catch (error) {
             
         }
