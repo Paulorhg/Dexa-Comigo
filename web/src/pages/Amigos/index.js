@@ -25,21 +25,13 @@ export default function Amigos() {
         try {
             api.get('amigos/', {}).then(res => {
                 //console.log(res.data)
-                setAmigos(res.data);
+                setAmigos(res.data.friend);
             })
         } catch (error) {
             
         }
 
     }, [loggedUser, params.id]);
-
-    // async function buscarAmigo(){
-        
-    // }
-
-    // function teste(){
-    //     console.log(novoAmigo)
-    // }
 
     async function handleNovoAmigo(e){
         e.preventDefault();
@@ -50,11 +42,11 @@ export default function Amigos() {
                 //setNovoAmigo(res.data);
                 console.log(res.data)
                 if(res.data != null){
-                    console.log("1")
                     PostAmigo(res.data.user._id)
+                    this.forceUpdate(amigos)
                 }
-
-            });
+                
+            })
         } catch (error) {
         }
     }
@@ -62,17 +54,15 @@ export default function Amigos() {
     async function PostAmigo(id){
         
         const user2 = id;
-        console.log("2")
         const data = {
             user2
         }
-        console.log("3")
         try {
-            console.log("5")
             await api.post('amigos/', data).then(res => {
-                
+
+                setAmigos((amigos) => [...amigos, res.data.friend])
+                console.log(amigos);
             });
-            history.push('/amigos')
         } catch (error) {
             
         }
@@ -82,7 +72,7 @@ export default function Amigos() {
         try {
             await api.delete(`amigos/${id}`);
             amigos.map(amigo => console.log(amigo._id))
-            history.push('/amigos')
+            amigos.filter(amigo => amigo._id != id)
         } catch (error) {
             
         }
@@ -106,7 +96,7 @@ export default function Amigos() {
             }
             await api.put(`amigos/${amigo._id}`, data).then(res => {
                 console.log(res.data);
-                amigos.friend.map(amigoAlterado => {
+                amigos.map(amigoAlterado => {
                     if(amigoAlterado._id === amigo._id){
                         amigo.accept = true;
                         console.log(amigoAlterado);
@@ -142,7 +132,7 @@ export default function Amigos() {
                 <div id="lista-amigos">
                     <h2>Lista de amigos</h2>
                     <ul id="confirmados">
-                    { amigos.length !== 0 ? amigos.friend.map(amigo => (
+                    { amigos.length !== 0 ? amigos.map(amigo => (
                         amigo.accept == true ?
                         <li id="lista" key={amigo._id}>
                             <div>
@@ -156,7 +146,7 @@ export default function Amigos() {
                     </ul>
                     <h2>Amigos Pendentes</h2>
                     <ul id="pendentes">
-                    { amigos.length !== 0 ? amigos.friend.map(amigo => (
+                    { amigos.length !== 0 ? amigos.map(amigo => (
                         amigo.accept == false ?
                         <li id="lista" key={amigo._id}>
                             <div>

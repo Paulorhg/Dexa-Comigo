@@ -22,9 +22,9 @@ export default function listChurrasco(churrascos) {
                         <Link to={`/churrasco/${churrasco._id}`}>
                             <div id="link">
                             <strong><center><u><font face="New Century Schoolbook"> NOME DO CHURRASCO </font></u></center></strong>
-                                <p><center>{churrasco.name}</center></p>
+                                <center><p>{churrasco.name}</p></center>
                                 <strong><center><u>DATA</u></center></strong>
-                                <p><center>{FormataData2(churrasco.date)}</center></p>
+                                <center><p>{FormataData2(churrasco.date)}</p></center>
                                 
                             </div>
                         </Link>

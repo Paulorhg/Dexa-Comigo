@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createElement } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import Template from '../../components/Template'
 import api from '../../services/api'
@@ -9,14 +9,15 @@ import cerveja from '../../assets/cerveja.png'
 import linguica from '../../assets/linguica.png'
 import frango from '../../assets/frango.png'
 import refrigerante from '../../assets/refrigerante.png'
+import { useHistory } from 'react-router-dom'
 
 export default function Criar() {
-
+    const history = useHistory();
     const loggedUser = window.localStorage.getItem('user');
     const user = JSON.parse(loggedUser);
     const [name, setName] = useState();
     const [date, setDate] = useState();
-    const [participantesState, setParticipantesState] = useState([]);
+    const [participantes, setParticipantes] = useState([]);
     const [qtdCarne, setCarne] = useState();
     const [qtdCerveja, setCerveja] = useState();
     const [qtdLinguica, setLinguica] = useState();
@@ -24,7 +25,6 @@ export default function Criar() {
     const [qtdRefri, setRefri] = useState();
     const [amigos, setAmigos] = useState([]);
     var participante;
-    var participantes = [];
 
 
     useEffect(() => {
@@ -37,6 +37,11 @@ export default function Criar() {
 
         }
     }, [loggedUser]);
+
+     //useEffect(() => {
+    //     setParticipantes(participantesAux);
+    //     console.log(participantes);
+     //}, [participantes])
 
     function nomeAmigo(amigo){
         if(amigo.user1._id === user._id){
@@ -78,13 +83,11 @@ export default function Criar() {
         quantity = qtdRefri;
 
         itensQuantity.push({ item, quantity})
-   
-        console.log(itensQuantity);
 
         return itensQuantity
     }
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
 
         let itensQuantity = PegaItens()
@@ -94,6 +97,14 @@ export default function Criar() {
             date,
             participantes,
             itensQuantity
+        }
+
+        try {
+            await api.post('churrascos/', data).then(res => {
+                history.push(`/churrascos/${res.data.churrascos._id}`)
+            });
+        } catch (error) {
+            
         }
 
         console.log(data)
@@ -154,22 +165,10 @@ export default function Criar() {
                         <div id="destino-participantes">
                             <div id="origem-participantes">
                                 <input 
+                                    id="inputParticipante"
                                     type="text"
                                     onChange={e => participante = e.target.value}
-                                    // onChange={e => {
-                                    //     let teste = false;
-                                    //     participantes.forEach(element => {
-                                    //         if (element == e.target.value) {
-                                    //             teste = true;
-                                    //             return;
-                                    //         }
-                                    //     });
-                                    //     if(teste)
-                                    //         participantes.push(e.target.value)
-                                    // }}
-                                    //value={participante}
                                     list="amigos-list"
-                                    required
                                 />
                                 
                                 <datalist id="amigos-list">
@@ -188,9 +187,11 @@ export default function Criar() {
                         <div className= "botoes">
                         <button type="button" id="botaoAdd" onClick={() => {
                                 console.log(participante)
-                                participantes.push(participante);
+                                //participantesAux.push(participante);
+                                //console.log(participantesAux)
+                                setParticipantes(participantes => [ ...participantes, participante ]);
                                 console.log(participantes)
-                                setParticipantesState(participantes)
+                                document.getElementById("inputParticipante").value = '';
                             }
                         }> + </button>
                             {/* <button type="button" id="botaoAdd" onClick={() => duplicarCampos("origem-participantes", "destino-participantes")}> + </button>
