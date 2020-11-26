@@ -54,75 +54,95 @@ export default function Detalhes() {
                             <h2>{FormataData2(churrasco.date)}</h2>
                         </div>
 
-                        <div id="form-criar">
-                            <div id="caracteristica">
+                        <div id="form-criar1">
+
+                            <div id="caracteristica1">
                                 <div id="nome">
-                                        <label>Nome</label>
-                                        <p>{churrasco.name}</p>
+                                        <label>Nome</label>                                  
+                                        <p>{churrasco.name}</p><br></br>
                                 </div>  
 
                                 <div id="data">    
                                         <label>Data</label>
+                                        <p>{churrasco.date}</p><br></br>
                                 </div>
                                 <div id="participantes">       
                                         <label>Participantes</label>
+                                        <br></br>
+                                       { churrasco.participantes.map(participante => (
+                                        <li id="lista" key={participante._id}>
+                                            <div>
+                                                <p>{participante.name}</p>
+                                            </div>
+                                       </li>
+
+                                       
+                                        ))}
                                 </div>  
                             </div>
 
 
 
 
-                            <div id="arrumar-itens1">
+                            <div id="arrumar-itens1">   
                                 <label>Itens</label>
 
                                 <div id="destino-itens">
                                     <div >
                                         <img id="carne" src={carne} alt="carne"/>
+
                                         <div id="escrita-carne">
+                                            <h3> Quantidade: </h3>
+                                            <h3> Valor Total: </h3>
+                                        </div>         
+                                    </div>
+
+                                    <div >
+                                        <img id="cerveja" src={cerveja} alt="cerveja"/>
+                                        <div id="escrita-cerveja">
+                                            <h3> Quantidade: </h3>
+                                            <h3> Valor Total: </h3>
+                                        </div>     
+                                    </div>
+
+                                    <div>
+                                        <img id="linguica" src={linguica} alt="linguica"/>
+                                        <div id="escrita-linguica">
                                             <h3> Quantidade: </h3>
                                             <h3> Valor Total: </h3>
                                         </div>
                                     </div>
-                                </div>
-                                <div >
-                                    <img id="cerveja" src={cerveja} alt="cerveja"/>
-                                    <div id="escrita-cerveja">
-                                        <h3> Quantidade: </h3>
-                                        <h3> Valor Total: </h3>
+
+                                    <div>
+                                        <img id="frango" src={frango} alt="frango"/>
+                                        <div id="escrita-frango">
+                                            <h3> Quantidade: </h3>
+                                            <h3> Valor Total: </h3>
+                                        </div>
                                     </div>
-                                </div>
+
+                                    <div>
+                                        <img id="refrigerante" src={refrigerante} alt="refrigerante"/>
+                                        <div id="escrita-refrigerante">
+                                            <h3> Quantidade: </h3>
+                                            <h3> Valor Total: </h3>
+                                        </div>
+                                    </div>
+                                 </div>
                             </div>
-                            <div >
-                                <img id="linguica" src={linguica} alt="linguica"/>
-                                <div id="escrita-linguica">
-                                    <h3> Quantidade: </h3>
-                                    <h3> Valor Total: </h3>
-                                </div>
-                            </div>
-                            <div >
-                                <img id="frango" src={frango} alt="frango"/>
-                                <div id="escrita-frango">
-                                    <h3> Quantidade: </h3>
-                                    <h3> Valor Total: </h3>
-                                </div>
-                            </div>
-                            <div >
-                                <img id="refrigerante" src={refrigerante} alt="refrigerante"/>
-                                <div id="escrita-refrigerante">
-                                    <h3> Quantidade: </h3>
-                                    <h3> Valor Total: </h3>
-                                </div>
-                            </div>
-                    
-                        </div>
-                    </div>           
-                :
+                         </div>           
+                    </div>      
+                    :
+
+
                 <div id="header">
                     <h1 >Meus churrascos</h1>
                     <h2>Carregando...</h2>
                     </div>
                 }
-            </div>
+                </div>
+                
+                
         </Template>
     );
 }

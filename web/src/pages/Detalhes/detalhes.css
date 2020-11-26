@@ -21,32 +21,40 @@
 }
 
 #arrumar-itens1{
-    margin-left: 500px;
-    margin-top: -50px;
+    width: 50%;
+    position: absolute;
+    margin-left: 400px;
+    margin-top: 20px;
     justify-content: center;
     align-items: center;
     display: flex;
     flex-direction: column;
 }
 
-#form-criar form{
-    margin-left: -400px;
+#form-criar1 form{
+    margin-left: 0px;
     margin-top: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     
+    
 
 }
 
-#caracteristica{
+#caracteristica1{
+    width: 50%;
     margin-left: 300px;
+    margin-top: 30px;
+    position: absolute;
+    
 }
 
 
 
-#form-criar input{
+
+#form-criar1 input{
     margin-bottom: 10x;
 }
 
