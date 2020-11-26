@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import ReactDOM from 'react-dom'
 import { useParams, useHistory } from 'react-router-dom'
 import {FiTrash2} from 'react-icons/fi'
 import {ImCheckmark} from 'react-icons/im'
@@ -26,6 +27,7 @@ export default function Amigos() {
             api.get('amigos/', {}).then(res => {
                 //console.log(res.data)
                 setAmigos(res.data.friend);
+                
             })
         } catch (error) {
             
@@ -43,12 +45,14 @@ export default function Amigos() {
                 console.log(res.data)
                 if(res.data != null){
                     PostAmigo(res.data.user._id)
-                    this.forceUpdate(amigos)
+                    
                 }
                 
             })
         } catch (error) {
         }
+        
+        // ReactDOM.render( document.getElementById("lista-amigos"));
     }
 
     async function PostAmigo(id){
