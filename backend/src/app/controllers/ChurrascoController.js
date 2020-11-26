@@ -11,7 +11,7 @@ router.use(authMiddleware);
 router.get('/', async (req, res) => {
     const user = req.userId;
     try {
-        const churrascos = await Churrasco.find({ owner: user }).populate(['owner', 'itensquantity']);
+        const churrascos = await Churrasco.find({ owner: user }).populate(['owner', 'itensquantity', 'participantes']);
         return res.send({ churrascos });
     } catch (err) {
         return res.status(400).send({ error: 'Error loading churrascos' })
@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:churrascoId', async (req, res) => {
     try {
-        const churrasco = await Churrasco.findById(req.params.churrascoId).populate(['user', 'itensquantity']);
+        const churrasco = await Churrasco.findById(req.params.churrascoId).populate(['user', 'itensquantity', 'participantes']);
 
         return res.send({ churrasco });
     } catch (err) {

@@ -16,24 +16,16 @@ export default function Criar() {
     const user = JSON.parse(loggedUser);
     const [name, setName] = useState();
     const [date, setDate] = useState();
-    var participantes = [];
+    const [participantesState, setParticipantesState] = useState([]);
     const [qtdCarne, setCarne] = useState();
     const [qtdCerveja, setCerveja] = useState();
     const [qtdLinguica, setLinguica] = useState();
     const [qtdFrango, setFrango] = useState();
     const [qtdRefri, setRefri] = useState();
     const [amigos, setAmigos] = useState([]);
-    //var amigos;
+    var participante;
+    var participantes = [];
 
-    useEffect(() => {
-        // try {
-        //     api.get('itens', {}).then(res => {
-        //         setItens(res.data);
-        //     })
-        // } catch (error) {
-
-        // }
-    }, [loggedUser]);
 
     useEffect(() => {
         try {
@@ -59,19 +51,6 @@ export default function Criar() {
         }
         return amigo.user1._id;
     }
-
-    // function listaAmigos(amigos){
-    //     console.log(amigos);
-    //     var lista = document.getElementById("amigos-list");
-
-    //     amigos.forEach(amigo => {
-        
-    //         var option = createElement('option');
-    //         // option.innerHTML = nomeAmigo(amigo);
-    //         // option.nodeValue = amigo._id;
-    //         // lista.appendChild(option)
-    //     })
-    // }
 
     function PegaItens(){
         let item = "Carne";
@@ -109,9 +88,7 @@ export default function Criar() {
         e.preventDefault();
 
         let itensQuantity = PegaItens()
-
         console.log(participantes);
-
         const data = {
             name,
             date,
@@ -131,6 +108,10 @@ export default function Criar() {
         
         for(var i=0; i<camposClonados.length;i++){
             camposClonados[i].value = '';
+            // camposClonados[i].onChange = e => {
+            //     console.log(participantes)
+            //     participantes[i] = (e.target.value)
+            // };
         }
     }
 
@@ -144,20 +125,6 @@ export default function Criar() {
             node1.removeChild(node1.childNodes[ultimo]);
         }
     }
-
-    // function controleBotao(){
-
-    //     //cria um event listener que escuta mudanças no input
-    //     document.getElementById("destino-teste").addEventListener("destino-teste", function(event){
-    //     //busca conteúdo do input
-    //         var qtd = document.getElementById("destino-teste").getElementsByTagName('input').length;
-
-    //         //valida conteudo do input 
-    //         if (qtd > 1) {
-    //         //habilita o botão
-    //         document.getElementById("botao").disabled = false;
-    //     });
-    // }
 
     return (
         <Template>
@@ -188,9 +155,19 @@ export default function Criar() {
                             <div id="origem-participantes">
                                 <input 
                                     type="text"
-                                    id="participantes"
-                                    onChange={e => participantes.push(e.target.value)}
-                                    //value={participantes}
+                                    onChange={e => participante = e.target.value}
+                                    // onChange={e => {
+                                    //     let teste = false;
+                                    //     participantes.forEach(element => {
+                                    //         if (element == e.target.value) {
+                                    //             teste = true;
+                                    //             return;
+                                    //         }
+                                    //     });
+                                    //     if(teste)
+                                    //         participantes.push(e.target.value)
+                                    // }}
+                                    //value={participante}
                                     list="amigos-list"
                                     required
                                 />
@@ -209,8 +186,15 @@ export default function Criar() {
                             </div>
                         </div>
                         <div className= "botoes">
-                            <button type="button" id="botaoAdd" onClick={() => duplicarCampos("origem-participantes", "destino-participantes")}> + </button>
-                            <button type="button" id="botaoRem" onClick={() => removerCampos("destino-participantes")}> - </button>
+                        <button type="button" id="botaoAdd" onClick={() => {
+                                console.log(participante)
+                                participantes.push(participante);
+                                console.log(participantes)
+                                setParticipantesState(participantes)
+                            }
+                        }> + </button>
+                            {/* <button type="button" id="botaoAdd" onClick={() => duplicarCampos("origem-participantes", "destino-participantes")}> + </button>
+                            <button type="button" id="botaoRem" onClick={() => removerCampos("destino-participantes")}> - </button> */}
                         </div>
 
 
