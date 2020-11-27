@@ -225,7 +225,7 @@ export default function Detalhes() {
                                 <p>{ValorTotal()}</p>
                                 <br/>
                                 <h3>Valor por Pessoa</h3>
-                                <p>{ValorTotal() / churrasco.participantes.length}</p>
+                                <p>{ValorTotal() / (churrasco.participantes.length + 1 ) }</p>
                             </div>
 
 
