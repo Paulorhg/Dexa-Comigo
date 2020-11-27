@@ -245,7 +245,7 @@ export default function Criar() {
                                     placeholder="Quilos"
                                     onChange={e => setCarne(e.target.value)}
                                     value = "0"
-                                    required = "true"
+                                    required
                                 />
                                 <h3> Preço: </h3>
                                 <input 
@@ -254,7 +254,7 @@ export default function Criar() {
                                     placeholder="Reais"
                                     onChange={e => setValorCarne(e.target.value)}
                                     value = "0"
-                                    required = "true"
+                                    required
                                     />
                                 <h3> Valor Total: </h3>
                             </div>
@@ -270,7 +270,7 @@ export default function Criar() {
                                     placeholder="Litros"
                                     onChange={e => setCerveja(e.target.value)}
                                     value = "0"
-                                    required = "true"
+                                    required
                                     />
                                     <h3> Preço: </h3>
                                 <input 
@@ -279,7 +279,7 @@ export default function Criar() {
                                     placeholder="Reais"
                                     onChange={e => setValorCerveja(e.target.value)}
                                     value = "0"
-                                    required = "true"
+                                    required
                                     />
                                 <h3> Valor Total: </h3>
                             </div>
@@ -295,7 +295,7 @@ export default function Criar() {
                                     placeholder="Quilos"
                                     onChange={e => setLinguica(e.target.value)}
                                     value = "0"
-                                    required = "true"
+                                    required
                                 />
                                 <h3> Preço: </h3>
                                 <input 
@@ -304,7 +304,7 @@ export default function Criar() {
                                     placeholder="Reais"
                                     onChange={e => setValorLinguiça(e.target.value)}
                                     value = "0"
-                                    required = "true"
+                                    required
                                     />
                                 <h3> Valor Total: </h3>
                             </div>
@@ -320,7 +320,7 @@ export default function Criar() {
                                     placeholder="Quilos"
                                     onChange={e => setFrango(e.target.value)}
                                     value = "0"
-                                    required = "true"
+                                    required
                                 />
                                 <h3> Preço: </h3>
                                 <input 
@@ -329,7 +329,7 @@ export default function Criar() {
                                     placeholder="Reais"
                                     onChange={e => setValorFrango(e.target.value)}
                                     value = "0"
-                                    required = "true"
+                                    required
                                     />
                                 <h3> Valor Total: </h3>
                             </div>
@@ -345,7 +345,7 @@ export default function Criar() {
                                     placeholder="Litros"
                                     onChange={e => setRefri(e.target.value)}
                                     value = "0"
-                                    required = "true"
+                                    required
                                 />
                                 <h3> Preço: </h3>
                                 <input 
@@ -354,7 +354,7 @@ export default function Criar() {
                                     placeholder="Reais"
                                     onChange={e => setValorRefri(e.target.value)}
                                     value = "0"
-                                    required = "true"
+                                    required
                                     />
                                 <h3> Valor Total: </h3>
                             </div>
