@@ -19,10 +19,15 @@ export default function Criar() {
     const [date, setDate] = useState();
     const [participantes, setParticipantes] = useState([]);
     const [qtdCarne, setCarne] = useState();
+    const [valorCarne, setValorCarne] = useState();
     const [qtdCerveja, setCerveja] = useState();
+    const [valorCerveja, setValorCerveja] = useState();
     const [qtdLinguica, setLinguica] = useState();
+    const [valorLinguiça, setValorLinguiça] = useState();
     const [qtdFrango, setFrango] = useState();
+    const [valorFrango, setValorFrango] = useState();
     const [qtdRefri, setRefri] = useState();
+    const [valorRefri, setValorRefri] = useState();
     const [amigos, setAmigos] = useState([]);
     var participante;
 
@@ -30,7 +35,8 @@ export default function Criar() {
     useEffect(() => {
         try {
             api.get('amigos', {}).then(res => {
-                setAmigos(res.data);
+                setAmigos(res.data.friend);
+                
                // listaAmigos(res.data.friend);
             })
         } catch (error) {
@@ -50,92 +56,104 @@ export default function Criar() {
         return amigo.user1.name;
     }
 
-    function idAmigo(amigo){
-        if(amigo.user1._id === user._id){
-            return amigo.user2._id;
-        }
-        return amigo.user1._id;
+    function nomeParticipante(id){
+        amigos.map(amigo => {
+            if(amigo._id == id)
+                return nomeAmigo(amigo);
+        })
+        return null
     }
+
+    // function idAmigo(amigo){
+    //     if(amigo.user1._id === user._id){
+    //         return amigo.user2._id;
+    //     }
+    //     return amigo.user1._id;
+    // }
 
     function PegaItens(){
         let item = "Carne";
         let quantity = qtdCarne;
+        let price = valorCarne;
         var itensQuantity = [];
 
-        itensQuantity.push({ item, quantity})
+        itensQuantity.push({ item, quantity, price})
 
         item = "Cerveja";
         quantity = qtdCerveja;
+        price = valorCerveja;
 
-        itensQuantity.push({ item, quantity})
+        itensQuantity.push({ item, quantity, price})
 
         item = "Linguica";
         quantity = qtdLinguica;
+        price = valorLinguiça;
 
-        itensQuantity.push({ item, quantity})
+        itensQuantity.push({ item, quantity, price})
 
         item = "Frango";
         quantity = qtdFrango;
+        price = valorFrango;
 
-        itensQuantity.push({ item, quantity})
+        itensQuantity.push({ item, quantity, price})
 
         item = "Refrigerante";
         quantity = qtdRefri;
+        price = valorRefri;
 
-        itensQuantity.push({ item, quantity})
+        itensQuantity.push({ item, quantity, price})
 
         return itensQuantity
     }
 
     async function handleSubmit(e) {
         e.preventDefault();
-
-        let itensQuantity = PegaItens()
-        console.log(participantes);
+        let churrasId
+        let itensquantity = PegaItens()
         const data = {
             name,
             date,
             participantes,
-            itensQuantity
+            itensquantity
         }
 
         try {
             await api.post('churrascos/', data).then(res => {
-                history.push(`/churrascos/${res.data.churrascos._id}`)
+                churrasId = res.data.churrasco._id;
             });
         } catch (error) {
             
         }
-
+        history.push(`/churrasco/${churrasId}`)
         console.log(data)
     }
 
-    function duplicarCampos(idOrigem, idDestino){
-        var clone = document.getElementById(idOrigem).cloneNode(true);
-        var destino = document.getElementById(idDestino);
-        destino.appendChild (clone);
+    // function duplicarCampos(idOrigem, idDestino){
+    //     var clone = document.getElementById(idOrigem).cloneNode(true);
+    //     var destino = document.getElementById(idDestino);
+    //     destino.appendChild (clone);
         
-        var camposClonados = clone.getElementsByTagName('input');
+    //     var camposClonados = clone.getElementsByTagName('input');
         
-        for(var i=0; i<camposClonados.length;i++){
-            camposClonados[i].value = '';
-            // camposClonados[i].onChange = e => {
-            //     console.log(participantes)
-            //     participantes[i] = (e.target.value)
-            // };
-        }
-    }
+    //     for(var i=0; i<camposClonados.length;i++){
+    //         camposClonados[i].value = '';
+    //         // camposClonados[i].onChange = e => {
+    //         //     console.log(participantes)
+    //         //     participantes[i] = (e.target.value)
+    //         // };
+    //     }
+    // }
 
-    function removerCampos(idDestino){
-        var node1 = document.getElementById(idDestino);
+    // function removerCampos(idDestino){
+    //     var node1 = document.getElementById(idDestino);
 
-        var qtd = document.getElementById(idDestino).getElementsByTagName('input').length;
-        //valida conteudo do input 
-        if (qtd > 1) {
-            var ultimo = node1.getElementsByTagName('input').length - 1;
-            node1.removeChild(node1.childNodes[ultimo]);
-        }
-    }
+    //     var qtd = document.getElementById(idDestino).getElementsByTagName('input').length;
+    //     //valida conteudo do input 
+    //     if (qtd > 1) {
+    //         var ultimo = node1.getElementsByTagName('input').length - 1;
+    //         node1.removeChild(node1.childNodes[ultimo]);
+    //     }
+    // }
 
     return (
         <Template>
@@ -173,9 +191,9 @@ export default function Criar() {
                                 
                                 <datalist id="amigos-list">
                                 { 
-                                    amigos.length !== 0 ? amigos.friend.map(amigo => (
+                                    amigos.length !== 0 ? amigos.map(amigo => (
                                         amigo.accept == true ?
-                                        <option id="opcoes" key={amigo._id} value={idAmigo(amigo)}>
+                                        <option id="opcoes" key={amigo._id} value={amigo._id}>
                                             {nomeAmigo(amigo)}
                                         </option>
                                         : null
@@ -185,17 +203,31 @@ export default function Criar() {
                             </div>
                         </div>
                         <div className= "botoes">
-                        <button type="button" id="botaoAdd" onClick={() => {
-                                console.log(participante)
-                                //participantesAux.push(participante);
-                                //console.log(participantesAux)
-                                setParticipantes(participantes => [ ...participantes, participante ]);
-                                console.log(participantes)
-                                document.getElementById("inputParticipante").value = '';
-                            }
-                        }> + </button>
-                            {/* <button type="button" id="botaoAdd" onClick={() => duplicarCampos("origem-participantes", "destino-participantes")}> + </button>
-                            <button type="button" id="botaoRem" onClick={() => removerCampos("destino-participantes")}> - </button> */}
+                            <button type="button" id="botaoAdd" onClick={() => {
+                                    let testePart = false;
+                                    participantes.map(part => {
+                                        if(part == participante)
+                                            testePart = true;
+                                    })
+                                    if(!testePart)
+                                        setParticipantes(participantes => [ ...participantes, participante ]);
+                                    document.getElementById("inputParticipante").value = '';
+                                    console.log(amigos[0])
+                                    console.log(participante)
+                                    console.log(participantes)
+                                }
+                            }> + </button>
+                            
+                        </div>
+                        <div id="participantes-inseridos">
+                            <ul>
+                                { participantes.length !=0 ? participantes.map(participante => (
+                                    <li id="lista-participantes" key={participante}>
+                                            <p>{nomeParticipante(participante)}</p>
+                                    </li>
+                                )) : null
+                                }
+                            </ul>
                         </div>
 
 
@@ -212,6 +244,15 @@ export default function Criar() {
                                     type="number" 
                                     placeholder="Quilos"
                                     onChange={e => setCarne(e.target.value)}
+                                    value = "0"
+                                />
+                                <h3> Preço: </h3>
+                                <input 
+                                    id="input-valor-carne" 
+                                    type="number" 
+                                    placeholder="Reais"
+                                    onChange={e => setValorCarne(e.target.value)}
+                                    value = "0"
                                     />
                                 <h3> Valor Total: </h3>
                             </div>
@@ -226,6 +267,15 @@ export default function Criar() {
                                     type="number" 
                                     placeholder="Litros"
                                     onChange={e => setCerveja(e.target.value)}
+                                    value = "0"
+                                    />
+                                    <h3> Preço: </h3>
+                                <input 
+                                    id="input-valor-cerveja" 
+                                    type="number" 
+                                    placeholder="Reais"
+                                    onChange={e => setValorCerveja(e.target.value)}
+                                    value = "0"
                                     />
                                 <h3> Valor Total: </h3>
                             </div>
@@ -240,7 +290,16 @@ export default function Criar() {
                                     type="number" 
                                     placeholder="Quilos"
                                     onChange={e => setLinguica(e.target.value)}
+                                    value = "0"
                                 />
+                                <h3> Preço: </h3>
+                                <input 
+                                    id="input-valor-linguiça" 
+                                    type="number" 
+                                    placeholder="Reais"
+                                    onChange={e => setValorLinguiça(e.target.value)}
+                                    value = "0"
+                                    />
                                 <h3> Valor Total: </h3>
                             </div>
                         </div>
@@ -254,7 +313,16 @@ export default function Criar() {
                                     type="number" 
                                     placeholder="Quilos"
                                     onChange={e => setFrango(e.target.value)}
+                                    value = "0"
                                 />
+                                <h3> Preço: </h3>
+                                <input 
+                                    id="input-valor-frango" 
+                                    type="number" 
+                                    placeholder="Reais"
+                                    onChange={e => setValorFrango(e.target.value)}
+                                    value = "0"
+                                    />
                                 <h3> Valor Total: </h3>
                             </div>
                         </div>
@@ -269,27 +337,16 @@ export default function Criar() {
                                     placeholder="Litros"
                                     onChange={e => setRefri(e.target.value)}
                                 />
+                                <h3> Preço: </h3>
+                                <input 
+                                    id="input-valor-refri" 
+                                    type="number" 
+                                    placeholder="Reais"
+                                    onChange={e => setValorRefri(e.target.value)}
+                                    />
                                 <h3> Valor Total: </h3>
                             </div>
                         </div>
-                       
-
-
-                            {/*
-                            <div id="origem-itens">
-                                <input 
-                                    type="text"
-                                    id="itens"
-                                    onChange={e => setItensQuantity(e.target.value)}
-                                    value={itensQuantity}
-                                    required
-                                />
-                            </div>
-                        </div>
-                        <div class="botoes">
-                            <button onClick={() => duplicarCampos("origem-itens", "destino-itens")}>Adicionar</button>
-                            <button id="botao" onClick={() => removerCampos("destino-itens")}>Remover</button>
-                        </div>*/}
                         </div>
                         </div>
                             

@@ -7,13 +7,16 @@ const ItensQuantitySchema = new mongoose.Schema({
         require: true
     },
     item: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Item',
+        type: String,
         require: true
     },
     quantity: {
         type: Number,
         require: true
+    },
+    price: {
+        type: Number,
+        required: true,
     }
 });
 

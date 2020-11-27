@@ -20,8 +20,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:churrascoId', async (req, res) => {
     try {
-        const churrasco = await Churrasco.findById(req.params.churrascoId).populate(['user', 'itensquantity', 'participantes']);
-
+        const churrasco = await Churrasco.findById(req.params.churrascoId).populate(['owner', 'itensquantity']);
         return res.send({ churrasco });
     } catch (err) {
         return res.status(400).send({ error: 'Error loading churrasco' })
@@ -36,7 +35,7 @@ router.get('/passado/:dataHoje', async (req, res) => {
                 { date: { $lt: req.params.dataHoje } },
                 { owner: user }
             ]
-        }).populate(['user', 'itensquantity']);
+        }).populate(['user', 'itensquantity', 'participantes']);
         return res.send({ churrascos });
     } catch (err) {
         return res.status(400).send({ error: 'Error loading churrasco' })
@@ -51,7 +50,7 @@ router.get('/futuro/:dataHoje', async (req, res) => {
                 { date: { $gt: req.params.dataHoje } },
                 { owner: user }
             ]
-        }).populate(['user', 'itensquantity']);
+        }).populate(['user', 'itensquantity', 'participantes']);
         return res.send({ churrascos });
     } catch (err) {
         return res.status(400).send({ error: 'Error loading churrasco' })
@@ -84,9 +83,9 @@ router.post('/', async (req, res) => {
 router.put('/:churrascoId', async (req, res) => {
     try {
 
-        const { name, date, itensquantity } = req.body;
+        const { name, date, itensquantity, participantes } = req.body;
 
-        const churrasco = await Churrasco.findByIdAndUpdate(req.params.churrascoId, { name, date }, { new: true });
+        const churrasco = await Churrasco.findByIdAndUpdate(req.params.churrascoId, { name, date, participantes }, { new: true });
 
         churrasco.itensquantity = [];
         await ItensQuantity.remove({ churrasco: churrasco._id });

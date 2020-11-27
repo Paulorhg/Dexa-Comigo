@@ -20,6 +20,8 @@ export default function Detalhes() {
 
     const loggedUser = window.localStorage.getItem('user');
     const token = window.localStorage.getItem('jwt_token');
+    const participantesUsers = []
+
 
     useEffect(() => {
         if (!token || !loggedUser) {
@@ -32,6 +34,11 @@ export default function Detalhes() {
         try {
             api.get(`churrascos/${params.id}`, {}).then(res => {
                 setChurrasco(res.data.churrasco);
+                console.log(res.data.churrasco.participantes)
+                res.data.churrasco.participantes.map( participante => {
+                    PegaUser(participante)
+                 })
+            
             })
         } catch (error) {
             
@@ -41,6 +48,27 @@ export default function Detalhes() {
     function FormataData2(data){
         var dataFormatada = data.substr(8,2) + "/" + data.substr(5,2) + "/" + data.substr(0,4)
         return dataFormatada;
+    }
+
+    async function PegaUser(id){
+        // try {
+        //     api.get(`users/${id}`, {}).then(res => {
+        //         console.log(res.data)
+        //         participantesUsers = res.data;
+        //     })
+        // } catch (error) { }
+    } 
+
+    function ValorTotal(){
+
+        let total = 0;
+        churrasco.itensquantity.forEach(item => {
+            if(item.quantity != null && item.price != null){
+                total += item.quantity * item.price;
+            }
+        });
+
+        return total;
     }
 
     return (
@@ -64,19 +92,18 @@ export default function Detalhes() {
 
                                 <div id="data">    
                                         <label>Data</label>
-                                        <p>{churrasco.date}</p><br></br>
+                                        <p>{FormataData2(churrasco.date)}</p><br></br>
                                 </div>
                                 <div id="participantes">       
                                         <label>Participantes</label>
                                         <br></br>
-                                       { churrasco.participantes.map(participante => (
+                                        { participantesUsers.map(participante => (
+                                                                                        
                                         <li id="lista" key={participante._id}>
                                             <div>
-                                                <p>{participante.name}</p>
+                                                <p>{participante}</p>
                                             </div>
-                                       </li>
-
-                                       
+                                        </li>                                       
                                         ))}
                                 </div>  
                             </div>
@@ -93,7 +120,21 @@ export default function Detalhes() {
 
                                         <div id="escrita-carne">
                                             <h3> Quantidade: </h3>
-                                            <h3> Valor Total: </h3>
+                                            {
+                                                churrasco.itensquantity[0].quantity != undefined ? 
+                                                 
+                                                <div>
+                                                <p>{churrasco.itensquantity[0].quantity} Kg</p><br></br>
+                                                <h3> Valor Total: </h3>
+                                                <p>R${ churrasco.itensquantity[0].quantity * churrasco.itensquantity[0].price}</p>
+                                                </div>
+                                                : <div><p>0 Kg</p><br></br>
+                                                <h3> Valor Total: </h3>
+                                                <p>0</p>
+                                                </div>
+                                            }
+                                            
+                                            
                                         </div>         
                                     </div>
 
@@ -101,7 +142,20 @@ export default function Detalhes() {
                                         <img id="cerveja" src={cerveja} alt="cerveja"/>
                                         <div id="escrita-cerveja">
                                             <h3> Quantidade: </h3>
-                                            <h3> Valor Total: </h3>
+                                            {
+                                                churrasco.itensquantity[1].quantity != undefined ? 
+                                                <div>
+                                                <p>{churrasco.itensquantity[1].quantity} Kg</p><br></br>
+                                                <h3> Valor Total: </h3>
+                                                <p>R$ { churrasco.itensquantity[1].quantity * churrasco.itensquantity[1].price}</p>
+                                                </div>
+                                                
+                                                : <div><p>0 Kg</p><br></br>
+                                                <h3> Valor Total: </h3>
+                                                <p>0</p>
+                                                </div>
+                                            }
+                                            
                                         </div>     
                                     </div>
 
@@ -109,7 +163,19 @@ export default function Detalhes() {
                                         <img id="linguica" src={linguica} alt="linguica"/>
                                         <div id="escrita-linguica">
                                             <h3> Quantidade: </h3>
-                                            <h3> Valor Total: </h3>
+                                            {
+                                                churrasco.itensquantity[2].quantity != undefined ? 
+                                                <div>
+                                                <p>{churrasco.itensquantity[2].quantity} Kg</p><br></br>
+                                                <h3> Valor Total: </h3>
+                                                <p>R$ { churrasco.itensquantity[2].quantity * churrasco.itensquantity[2].price}</p>
+                                                </div>
+                                                : <div><p>0 Kg</p><br></br>
+                                                <h3> Valor Total: </h3>
+                                                <p>0</p>
+                                                </div>
+                                            }
+                                            
                                         </div>
                                     </div>
 
@@ -117,7 +183,19 @@ export default function Detalhes() {
                                         <img id="frango" src={frango} alt="frango"/>
                                         <div id="escrita-frango">
                                             <h3> Quantidade: </h3>
-                                            <h3> Valor Total: </h3>
+                                            {
+                                                churrasco.itensquantity[3].quantity != undefined ? 
+                                                <div>
+                                                <p>{churrasco.itensquantity[3].quantity} Kg</p><br></br>
+                                                <h3> Valor Total: </h3>
+                                                <p>R$ { churrasco.itensquantity[3].quantity * churrasco.itensquantity[3].price}</p>
+                                                </div>
+                                                : <div><p>0 Kg</p><br></br>
+                                                <h3> Valor Total: </h3>
+                                                <p>0</p>
+                                                </div>
+                                            }
+                                            
                                         </div>
                                     </div>
 
@@ -125,11 +203,32 @@ export default function Detalhes() {
                                         <img id="refrigerante" src={refrigerante} alt="refrigerante"/>
                                         <div id="escrita-refrigerante">
                                             <h3> Quantidade: </h3>
-                                            <h3> Valor Total: </h3>
+                                            {
+                                                churrasco.itensquantity[4].quantity != undefined ? 
+                                                <div>
+                                                <p>{churrasco.itensquantity[4].quantity} Kg</p><br></br>
+                                                <h3> Valor Total: </h3>
+                                                <p>R$ { churrasco.itensquantity[4].quantity * churrasco.itensquantity[4].price}</p>
+                                                </div>
+                                                : <div><p>0 Kg</p><br></br>
+                                                <h3> Valor Total: </h3>
+                                                <p>0</p>
+                                                </div>
+                                            }
+                                            
                                         </div>
                                     </div>
                                  </div>
                             </div>
+                            <div>
+                                <h3>Valor Total</h3>
+                                <p>{ValorTotal()}</p>
+                                <br/>
+                                <h3>Valor por Pessoa</h3>
+                                <p>{ValorTotal() / churrasco.participantes.length}</p>
+                            </div>
+
+
                          </div>           
                     </div>      
                     :

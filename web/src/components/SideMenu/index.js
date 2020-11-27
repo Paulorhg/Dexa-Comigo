@@ -47,15 +47,15 @@ export default function Accounts() {
                     <li className={path === '/churrascos' ? 'active' : ''}>
                         <Link to="/churrascos">MEUS CHURRASCOS</Link>
                     </li>
-                    <li className={path === '/divisao' ? 'active' : ''}>
+                    {/* <li className={path === '/divisao' ? 'active' : ''}>
                         <Link to="/divisao">DIVISÃO DE CONTAS</Link>
-                    </li>
+                    </li> */}
                     <li className={path === '/criar' ? 'active' : ''}>
                         <Link to="/criar">CRIAR CHURRASCO</Link>
                     </li>
-                    <li className={path === '/preferencias' ? 'active' : ''}>
+                    {/* <li className={path === '/preferencias' ? 'active' : ''}>
                         <Link to="/preferencias">PREFERÊNCIAS</Link>
-                    </li>
+                    </li> */}
                     <li className={path === '/amigos' ? 'active' : ''}>
                         <Link to="/amigos">AMIGOS</Link>
                     </li>
