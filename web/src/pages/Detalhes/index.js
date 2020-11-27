@@ -97,7 +97,7 @@ export default function Detalhes() {
                                 <div id="participantes">       
                                         <label>Participantes</label>
                                         <br></br>
-                                        { participantesUsers.map(participante => (
+                                        { churrasco.participantes.map(participante => (
                                                                                         
                                         <li id="lista" key={participante._id}>
                                             <div>
