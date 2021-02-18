@@ -220,12 +220,12 @@ export default function Detalhes() {
                                     </div>
                                  </div>
                             </div>
-                            <div>
+                            <div id="final">
                                 <h3>Valor Total</h3>
-                                <p>{ValorTotal()}</p>
+                                <p>R$ {ValorTotal()}</p>
                                 <br/>
                                 <h3>Valor por Pessoa</h3>
-                                <p>{ValorTotal() / (churrasco.participantes.length + 1 ) }</p>
+                                <p>R$ {ValorTotal() / (churrasco.participantes.length + 1 ) }</p>
                             </div>
 
 
